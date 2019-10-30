@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Flickr кошки</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/png">
+    <script src="flickr.js"></script>
+</head>
+<style>
+    img {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+
+    }
+
+    .imgDesc {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        display: none;
+        font-weight: bolder;
+        font-size: 2rem;
+        color: white;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    img:hover + .imgDesc, .imgDesc:hover {
+        display: block;
+    }
+
+    .imgContainer {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        position: relative;
+        margin: 5px;
+    }
+</style>
+<body>
+    <h1>Здесь будут загружены изображения</h1>
+
+<script>
+    GetPhotoUrls();
+</script>
+   
+
+</body>
+</html>
