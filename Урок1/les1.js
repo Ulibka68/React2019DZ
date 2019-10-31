@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-<h1>ДЗ</h1>    
-
-<script>
 
 const employers = ['Alex', '', 'ludmila', 'Viktor', '', 'oleg', 'iNna', 'Ivan', 'Alex', 'Olga', ' Ann'];
 
+// было
 let employersNames = [];
 for (var i = 0; i < employers.length; i++) {
 	if (employers[i].length > 0 && employers[i].length != '') {
@@ -27,6 +15,8 @@ for (var i = 0; i < employersNames.length; i++) {
 }
 
 console.log('employersNames : ',employersNames);
+
+// стало
 let employersNames1 = employers.filter((elm) => {return elm.length > 0;})
     .map((elm) => {return elm.toLowerCase().trim()})
 console.log('employersNames1 : ',employersNames1);
@@ -38,6 +28,7 @@ var sponsors = {
     rus: ['RusAuto', 'SBO']
 };
 
+// было
 function calcCash(own) {
     own = own || 0;
     var everyCash = Array.prototype.slice.call(arguments);
@@ -51,6 +42,7 @@ function calcCash(own) {
 var money = calcCash(null, sponsors.cash);
 console.log(money);
 
+// стало
 function calcCash1(CashArray,StartVal = 0) {
     return CashArray.reduce((StartVal,elm) => StartVal+elm);
 }
@@ -60,7 +52,7 @@ console.log(money1);
 
 
 
-
+// было
 function makeBusiness(owner, director, cash, emp) {
     director = director || 'Victor';
     var sumSponsors = sponsors.eu.concat(sponsors.rus, 'unexpected sponsor');
@@ -73,6 +65,7 @@ function makeBusiness(owner, director, cash, emp) {
 makeBusiness.apply(null, ['Sam', null, money, employersNames]);
 console.log("========================");
 
+// стало
 function makeBusiness1(argum) {
     let [owner, director, cash, emp] = argum;
     director = director || 'Victor';
@@ -85,9 +78,4 @@ function makeBusiness1(argum) {
 }
 makeBusiness1( ['Sam', null, money, employersNames]);
 
-
-</script>    
-
-</body>
-</html>
 
