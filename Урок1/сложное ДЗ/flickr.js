@@ -2,8 +2,11 @@
 // это секретный ключ. надо получать самостоятельно
 //  Как получить написано тут в ApiKeys (надо предварительно зарегистрироваться во Flickr)
 // https://www.flickr.com/services/api/
-const getApiKey = () => '5989617c0a5018ae4ee610b0c8b25e0e';
+// пункт меню -  Api Keys
 
+// В оригинале присутствует модуль apikey.js с функцией (одна строка) :
+// 
+// const getApiKey = () => '0009617c0a5018ae4ee610b0c800000';
      
 // https://javascript.info/async-iterators-generators
 // По хорошему надо из него сделать асинхронный генератор
