@@ -1,0 +1,9 @@
+$env:Path
+$env:Path += ";SomeRandomPath"
+$env:Path += ";C:\Program Files\GnuWin32\bin" 
+
+-- постоянное создание path
+setx PATH "$env:path;\the\directory\to\add" /M
+
+
+$env:Path += ";./node_modules/.bin"
