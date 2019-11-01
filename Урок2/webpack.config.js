@@ -1,5 +1,7 @@
+let polyfill = require("@babel/polyfill");
 let path = require('path');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 let conf = {
     entry: './src/main.js',
