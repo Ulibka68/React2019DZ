@@ -1,0 +1,1 @@
+// 2 файл: переменная sponsors, money и функция calcCash.
