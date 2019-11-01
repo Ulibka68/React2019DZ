@@ -4,12 +4,16 @@ let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 let conf = {
+    mode: 'development',
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist/'),
         filename: 'main.js',
         publicPath: 'dist/'
     },
+    watch : true,
+    devtool : "source-map",
+
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'styles.css'
@@ -20,17 +24,7 @@ let conf = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                        plugins: [
-                            "@babel/plugin-transform-react-jsx",
-                            ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                            ["@babel/plugin-proposal-class-properties", { "loose": true }]
-                        ]
-                    }
-                }
+                use: { loader: 'babel-loader' }
             },
             {
                 test: /\.module\.css$/,
