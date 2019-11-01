@@ -8,7 +8,7 @@ let conf = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, './dist/'),
-        filename: 'main.js',
+        filename: 'mainB.js',
         publicPath: 'dist/'
     },
     watch : true,
