@@ -1,6 +1,3 @@
-
-  
-
   module.exports = function (api) {
     api.cache(true);
   
@@ -12,9 +9,9 @@
               edge: "17",
               firefox: "60",
               chrome: "67",
-              "ie" : "10"
-            },
-            useBuiltIns: "entry",
+              ie : "10"
+            }
+           
           },
           "@babel/preset-react"
         ],
