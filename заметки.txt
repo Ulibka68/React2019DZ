@@ -7,3 +7,9 @@ setx PATH "$env:path;\the\directory\to\add" /M
 
 
 $env:Path += ";./node_modules/.bin"
+
+
+https://webformyself.com/kak-ispolzovat-bootstrap-s-react/
+npm i -S bootstrap jquery popper.js   react-bootstrap
+
+https://react-bootstrap.github.io/getting-started/introduction

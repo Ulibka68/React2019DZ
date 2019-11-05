@@ -6,6 +6,8 @@ import PostList from "../post-list/post-list";
 import PostAddForm from "../post-add-form/post-add-form";
 import "./app.css";
 
+import ModalExample from "../modalForm/edit-form";
+
 const App = () => {
 
     const data = [
@@ -14,7 +16,7 @@ const App = () => {
         {label : "3Третий. I need break", important : false, key : 3}
     ];
 
-
+    
     return (
         <div className="app">
             <AppHeader  />
@@ -24,6 +26,9 @@ const App = () => {
             </div>
             <PostList posts = {data} />
             <PostAddForm />
+    
+            
+            <ModalExample buttonLabel="Вася"/>
         </div>
     );
 }
