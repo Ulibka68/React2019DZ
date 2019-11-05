@@ -6,7 +6,7 @@ import PostList from "../post-list/post-list";
 import PostAddForm from "../post-add-form/post-add-form";
 import "./app.css";
 
-import ModalExample from "../modalForm/edit-form";
+// import ModalExample from "../modalForm/edit-form";
 
 const App = () => {
 
@@ -28,7 +28,7 @@ const App = () => {
             <PostAddForm />
     
             
-            <ModalExample buttonLabel="Вася"/>
+            {/* <ModalExample buttonLabel="Вася"/> */}
         </div>
     );
 }

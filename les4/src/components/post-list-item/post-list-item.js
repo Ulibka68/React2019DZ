@@ -35,12 +35,12 @@ const PostListItem = ({label,important = false}) => {
                 </span>
             
                 <div className="d-flex justify-content-center align-items-center">
-                    <button 
-                        type="button" className="btn-star btn-sm"
-                        onClick = {onImportant} 
-                    >
+                    <button type="button" className="btn-star btn-sm" onClick = {onImportant} >
+                        <i className="fa fa-edit"></i>
+                    </button>
+
+                    <button type="button" className="btn-star btn-sm" onClick = {onImportant} >
                         <i className="fa fa-star"></i>
-                        
                     </button>
                     
                     <button 

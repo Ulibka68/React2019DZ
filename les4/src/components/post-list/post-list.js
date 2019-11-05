@@ -2,6 +2,8 @@ import React from "react";
 import PostListItem from "../post-list-item/post-list-item";
 import "./post-list.css";
 
+import FormEdit from "../modalForm/edit-form";
+
 const PostList = ({posts}) => {
 
     // второй вариант формирования массива
@@ -36,6 +38,7 @@ const PostList = ({posts}) => {
     };
 
     return (
+        <React.Fragment>
         <ul className="app-list list-group">
             
             {/* можно применить выражение прямо внутри */}
@@ -45,6 +48,8 @@ const PostList = ({posts}) => {
             } )}
             
         </ul>
+        <FormEdit />
+        </React.Fragment>
     );
 }
 
