@@ -7,6 +7,13 @@ import PostAddForm from "../post-add-form/post-add-form";
 import "./app.css";
 
 const App = () => {
+
+    const data = [
+        {label : "1Going to learn react", important : true, key : 1},
+        {label : "2Второй", important : false, key : 2},
+        {label : "3Третий. I need break", important : false, key : 3}
+    ];
+
     return (
         <div className="app">
             <AppHeader  />
@@ -14,7 +21,7 @@ const App = () => {
                 <SearchPanel/>
                 <PostStatusFilter />
             </div>
-            <PostList />
+            <PostList posts = {data} />
             <PostAddForm />
         </div>
     );
