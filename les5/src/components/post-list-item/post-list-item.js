@@ -1,7 +1,8 @@
 import React from "react";
-import "./post-list-item.css";
+// import "./post-list-item.sass";
+import "./post-list-item.scss";
 
-const PostListItem = ({label,important = false}) => {
+const PostListItem = ({label,important = false,onDelete}) => {
     
     // сначала установить State из Props
     const [important_state, SetImportant] = React.useState(important);
@@ -44,7 +45,9 @@ const PostListItem = ({label,important = false}) => {
                     </button>
                     
                     <button 
-                        type="button" className="btn-trash btn-sm">
+                        type="button" className="btn-trash btn-sm"
+                        onClick={onDelete}
+                    >
                         <i className="fa fa-trash-o"></i>
                     </button>
                     

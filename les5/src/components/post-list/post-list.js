@@ -1,10 +1,13 @@
 import React from "react";
+
+import { ListGroup } from 'reactstrap';
+
 import PostListItem from "../post-list-item/post-list-item";
 import "./post-list.css";
 
 import FormEdit from "../modalForm/edit-form";
 
-const PostList = ({posts}) => {
+const PostList = ({posts, onDelete}) => {
 
     // второй вариант формирования массива
     // const elements = posts.map ( (post) => {
@@ -39,15 +42,21 @@ const PostList = ({posts}) => {
 
     return (
         <React.Fragment>
-        <ul className="app-list list-group">
+        <ListGroup className="app-list">
             
             {/* можно применить выражение прямо внутри */}
             {posts.map ( (post) => {
-            //   return (  <PostListItem label={post.label}  important = {post.important}/> );
-              return (  <PostListItem {...post} /> );
+                //   return (  <PostListItem label={post.label}  important = {post.important}/> );
+                return (  <PostListItem {...post} onDelete = {
+                    () => {
+                            console.log("Deleted - вызвано в List :",post.key);
+                            onDelete(post.key);
+                          }
+                }/> );
             } )}
             
-        </ul>
+        </ListGroup>
+
         <FormEdit />
         </React.Fragment>
     );
