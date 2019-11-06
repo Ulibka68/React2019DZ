@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-// жить он будет в post-list
-// соответственно от item надо кинуть событие что надо вызвать modal
+// Заготовка формы редактирования поста
 
 class FormEdit extends React.Component {
   constructor (props)  {
@@ -17,8 +16,9 @@ class FormEdit extends React.Component {
  render() {
   const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
   
+  // eslint-disable-next-line
   const {buttonLabel,className} = this.props;
-
+  
   return (
   <div>
 
