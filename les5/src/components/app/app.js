@@ -21,34 +21,72 @@ const StyledAppBlock = styled(AppBlock)`
     background-color : grey;
 `;
 
-const App = () => {
 
-    const data = [
-        {label : "1Going to learn react", important : true, key : 1},
-        {label : "2Второй", important : false, key : 2},
-        {label : "3Третий. I need break", important : false, key : 3}
-    ];
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+  
+  
 
-    
-    return (
-        <AppBlock>
-        {/* <div className={style.app}> */}
-            <AppHeader  />
-            <div className="search-panel d-flex">
-                <SearchPanel/>
-                <PostStatusFilter />
-            </div>
-            <PostList 
-                posts = {data} 
-                onDelete = { id => console.log("App delete : ",id)}
-            />
-            <PostAddForm />
-    
-            
-            {/* <ModalExample buttonLabel="Вася"/> */}
-        {/* </div> */}
-        </AppBlock>
-    );
+export default class App extends React.Component {
+    constructor (props) {
+        super(props);
+        
+        this.state = { data : [
+            {label : "1Going to learn react", important : true, key : 1},
+            {label : "2Второй", important : false, key : 2},
+            {label : "3Третий. I need break", important : false, key : 3}
+            ]
+        };
+    };
+
+    deleteItem = (id) =>  {
+        console.log("App delete : ",id);
+        this.setState (({data}) => {
+            const index = data.findIndex ( el => (el.key === id));
+
+            let data1 = [...data];
+            if (index > -1) {
+                data1.splice(index,1);
+            };
+            return {data : data1};
+        } );
+    };
+
+    addItem = (newText) => {
+        const kk = uuidv4();
+        console.log(newText,' ', kk);
+        const newItem = {label : newText, important : false, key : kk};
+
+        this.setState(({data}) => {
+            const data1 = [...data, newItem];
+            return ( {data : data1} );
+        });
+    };
+
+    render() {
+        return (
+            <AppBlock>
+            {/* <div className={style.app}> */}
+                <AppHeader  />
+                <div className="search-panel d-flex">
+                    <SearchPanel/>
+                    <PostStatusFilter />
+                </div>
+                <PostList 
+                    posts = {this.state.data} 
+                    onDelete = {this.deleteItem}
+                />
+                <PostAddForm onAdd = {this.addItem} />
+        
+                
+                {/* <ModalExample buttonLabel="Вася"/> */}
+            {/* </div> */}
+            </AppBlock>
+        );
+    }
 }
 
-export default App;
