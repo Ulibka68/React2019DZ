@@ -5,12 +5,14 @@ import "./post-list-item.scss";
 const PostListItem = ({label,important = false,onDelete}) => {
     
     // сначала установить State из Props
+    // используем хук useState просто для разнообразия
     const [important_state, SetImportant] = React.useState(important);
     const [like_state, SetLike] = React.useState(false);
     
     const onImportant = (evt) => {
         
         // предотвратить обработку по умолчанию
+        // здесь наверно можно не вызывать потому что нет submit
         evt.preventDefault();
         // вернем противоположное
         SetImportant((imp) => (!imp ));

@@ -44,15 +44,7 @@ const PostList = ({posts, onDelete}) => {
     };
 
     CheckInputData();
-    // Ошибку не выводим
-    // if (! CheckInputData() ) {
-    //     return (
-    //         <ul className="app-list list-group">
-    //             Ошибка сервера - неправильный тип данных
-    //         </ul>        
-    //     );
-    // };
-
+    
     return (
         <ListGroup className="app-list">
             
@@ -61,7 +53,7 @@ const PostList = ({posts, onDelete}) => {
                 //   return (  <PostListItem label={post.label}  important = {post.important}/> );
                 return (  <PostListItem {...post} onDelete = {
                     () => {
-                            console.log("Deleted - вызвано в List :",post.key);
+                            // вызвать onDelete спустившееся сверху от родителя
                             onDelete(post.key);
                           }
                 }/> );

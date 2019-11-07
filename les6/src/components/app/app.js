@@ -5,7 +5,7 @@ import PostStatusFilter from "../post-status-filter/post-status-filter";
 import PostList from "../post-list/post-list";
 import PostAddForm from "../post-add-form/post-add-form";
 
-// import "./app.css";
+
 // import style from "./App.module.css";
 
 import styled from "styled-components";
@@ -49,7 +49,7 @@ export default class App extends React.Component {
     };
 
     deleteItem = (id) =>  {
-        console.log("App delete : ",id);
+        
         this.setState (({data}) => {
             const index = data.findIndex ( el => (el.key === id));
 
@@ -63,7 +63,8 @@ export default class App extends React.Component {
 
     addItem = (newText) => {
         const kk = uuidv4();
-        console.log(newText,' ', kk);
+        // отладка еще пригодится
+        // console.log(newText,' ', kk);
         const newItem = {label : newText, important : false, key : kk};
 
         this.setState(({data}) => {
@@ -75,7 +76,6 @@ export default class App extends React.Component {
     render() {
         return (
             <AppBlock>
-            {/* <div className={style.app}> */}
                 <AppHeader  />
                 <div className="search-panel d-flex">
                     <SearchPanel/>
@@ -86,10 +86,6 @@ export default class App extends React.Component {
                     onDelete = {this.deleteItem}
                 />
                 <PostAddForm onAdd = {this.addItem} />
-        
-                
-                {/* <ModalExample buttonLabel="Вася"/> */}
-            {/* </div> */}
             </AppBlock>
         );
     }
