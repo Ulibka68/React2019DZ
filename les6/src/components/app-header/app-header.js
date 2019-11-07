@@ -20,12 +20,12 @@ const Header = styled.div`
 `;
 
 
-const AppHeader = () => {
+const AppHeader = ({countPost,countLiked}) => {
     return (
         // замена div на ссылку
         <Header as='a' colored>
             <h1>Гайрат Власов</h1>
-            <h2>Записей 5, из них понравилось 1</h2>
+            <h2>Записей {countPost}, из них понравилось {countLiked}</h2>
         </Header>
     );
 }

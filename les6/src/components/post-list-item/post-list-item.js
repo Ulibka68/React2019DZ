@@ -2,7 +2,7 @@ import React from "react";
 // import "./post-list-item.sass";
 import "./post-list-item.scss";
 
-const PostListItem = ({label,important = false,onDelete,onToggleImportant,onToggleLiked}) => {
+const PostListItem = ({label,important = false,like=false,onDelete,onToggleImportant,onToggleLiked}) => {
     
     // сначала установить State из Props
     // используем хук useState просто для разнообразия
@@ -27,22 +27,22 @@ const PostListItem = ({label,important = false,onDelete,onToggleImportant,onTogg
     if (important) {
         classNames += ' important';
     };
-    if (like_state) { classNames += ' like'};
+    if (like) { classNames += ' like'};
 
 
     return (
         
             <li className={classNames}>
-                <span className="app-list-item-label" onClick = {onLike}>
+                <span className="app-list-item-label" onClick = {onToggleLiked}>
                     {label}
                 </span>
             
                 <div className="d-flex justify-content-center align-items-center">
-                    <button type="button" className="btn-star btn-sm" onClick = {onImportant} >
+                    <button type="button" className="btn-star btn-sm" onClick = {onToggleImportant} >
                         <i className="fa fa-edit"></i>
                     </button>
 
-                    <button type="button" className="btn-star btn-sm" onClick = {onImportant} >
+                    <button type="button" className="btn-star btn-sm" onClick = {onToggleImportant} >
                         <i className="fa fa-star"></i>
                     </button>
                     

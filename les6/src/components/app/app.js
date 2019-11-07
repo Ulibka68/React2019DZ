@@ -46,17 +46,19 @@ export default class App extends React.Component {
             {label : "3Третий. I need break", important : false, key : 3}
             ]
         };
-
-        // this.state = { data : [
-        //     {label : "1Going to learn react", important : true, key : 1},
-        //     undefined,
-        //     null,
-        //     1
-        //     ]
-        // };
-
-
     };
+
+    countLiked() { 
+        return (
+         this.state.data.reduce( (acc,curVal) =>{ 
+                return acc + (  !!curVal.like ? 1 : 0);
+            },0 )
+        );
+    }
+
+    countPosts() {
+        return this.state.data.length;
+    }
 
     deleteItem = (id) =>  {
         
@@ -84,18 +86,38 @@ export default class App extends React.Component {
     };
 
     onToggleImportant = (id ) => {
-        console.log(`app onToggleImportant : ${id}`);
+        // console.log(`app onToggleImportant : ${id}`);
+
+        this.setState (({data}) => {
+            const index = data.findIndex ( el => (el.key === id));
+
+            let data1 = [...data];
+            if (index > -1) {
+                data1[index].important= ! ( !! data1[index].important);
+            };
+            return {data : data1};
+        } );
     };
 
     onToggleLiked = (id) => {
-        console.log(`app onToggleLiked : ${id}`);
+        // console.log(`app onToggleLiked : ${id}`);
+
+        this.setState (({data}) => {
+            const index = data.findIndex ( el => (el.key === id));
+
+            let data1 = [...data];
+            if (index > -1) {
+                data1[index].like= ! ( !! data1[index].like);
+            };
+            return {data : data1};
+        } );
     };
 
 
     render() {
         return (
             <AppBlock>
-                <AppHeader  />
+                <AppHeader  countPost={this.countPosts()} countLiked ={this.countLiked()} />
                 <div className="search-panel d-flex">
                     <SearchPanel/>
                     <PostStatusFilter />
