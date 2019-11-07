@@ -5,7 +5,7 @@ import { ListGroup } from 'reactstrap';
 import PostListItem from "../post-list-item/post-list-item";
 import "./post-list.css";
 
-import FormEdit from "../modalForm/edit-form";
+// import FormEdit from "../modalForm/edit-form";
 
 const PostList = ({posts, onDelete}) => {
 
@@ -54,7 +54,6 @@ const PostList = ({posts, onDelete}) => {
     // };
 
     return (
-        <React.Fragment>
         <ListGroup className="app-list">
             
             {/* можно применить выражение прямо внутри */}
@@ -70,8 +69,6 @@ const PostList = ({posts, onDelete}) => {
             
         </ListGroup>
 
-        <FormEdit />
-        </React.Fragment>
     );
 }
 
