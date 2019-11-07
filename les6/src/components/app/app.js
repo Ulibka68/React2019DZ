@@ -83,6 +83,15 @@ export default class App extends React.Component {
         });
     };
 
+    onToggleImportant = (id ) => {
+        console.log(`app onToggleImportant : ${id}`);
+    };
+
+    onToggleLiked = (id) => {
+        console.log(`app onToggleLiked : ${id}`);
+    };
+
+
     render() {
         return (
             <AppBlock>
@@ -94,6 +103,8 @@ export default class App extends React.Component {
                 <PostList 
                     posts = {this.state.data} 
                     onDelete = {this.deleteItem}
+                    onToggleImportant={this.onToggleImportant}
+                    onToggleLiked = {this.onToggleLiked}
                 />
                 <PostAddForm onAdd = {this.addItem} />
             </AppBlock>
