@@ -46,6 +46,16 @@ export default class App extends React.Component {
             {label : "3Третий. I need break", important : false, key : 3}
             ]
         };
+
+        // this.state = { data : [
+        //     {label : "1Going to learn react", important : true, key : 1},
+        //     undefined,
+        //     null,
+        //     1
+        //     ]
+        // };
+
+
     };
 
     deleteItem = (id) =>  {

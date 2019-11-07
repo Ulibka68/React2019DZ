@@ -30,13 +30,18 @@ const PostList = ({posts, onDelete}) => {
 
         let rslt = true;
         posts.forEach( (elm) => {
-            // В данных жду этих ключей :            
-            let {label, important, key} = elm;
-            if (label === undefined || important === undefined || key === undefined) {
-                rslt = false;
+            // В данных жду этих ключей :   
+            if (typeof elm === "object" && elm != null) {
+                
+                let {label, important, key} = elm;
+                if (label === undefined || important === undefined || key === undefined) {
+                    rslt = false;
+                } else {
+                    checkedPosts.push(elm);  // если элемент прошел проверку - то запушим
+                };
             } else {
-                checkedPosts.push(elm);  // если элемент прошел проверку - то запушим
-            };
+                rslt = false;
+            }
         });
 
 
