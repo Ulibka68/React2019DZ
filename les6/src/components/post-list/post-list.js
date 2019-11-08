@@ -7,7 +7,7 @@ import "./post-list.css";
 
 // import FormEdit from "../modalForm/edit-form";
 
-const PostList = ({posts, onDelete}) => {
+const PostList = ({posts, onDelete,onToggleImportant,onToggleLiked}) => {
 
     // второй вариант формирования массива
     // const elements = posts.map ( (post) => {
@@ -56,12 +56,11 @@ const PostList = ({posts, onDelete}) => {
             {/* можно применить выражение прямо внутри */}
             {checkedPosts.map ( (post) => {
                 //   return (  <PostListItem label={post.label}  important = {post.important}/> );
-                return (  <PostListItem {...post} onDelete = {
-                    () => {
-                            // вызвать onDelete спустившееся сверху от родителя
-                            onDelete(post.key);
-                          }
-                }/> );
+                return (  <PostListItem {...post} 
+                            onDelete = {() => onDelete(post.key) }
+                            onToggleImportant = {() => onToggleImportant(post.key)}
+                            onToggleLiked = {()=>onToggleLiked(post.key)}
+                /> );
             } )}
             
         </ListGroup>
