@@ -4,10 +4,8 @@ import App from './components/app';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-import getData from "./services/getdata"
+import dataIceAndFire from "./services/getdata"
 
-// let a = getData();
-// a.then( data => console.log(data));
-// console.log('promice :',a);
+dataIceAndFire.testApi1();
 
 // ReactDOM.render(<App />, document.getElementById('root'));
