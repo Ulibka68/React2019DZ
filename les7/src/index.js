@@ -4,4 +4,10 @@ import App from './components/app';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import getData from "./services/getdata"
+
+// let a = getData();
+// a.then( data => console.log(data));
+// console.log('promice :',a);
+
+// ReactDOM.render(<App />, document.getElementById('root'));
