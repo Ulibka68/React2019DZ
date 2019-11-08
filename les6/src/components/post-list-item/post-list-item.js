@@ -23,7 +23,7 @@ const PostListItem = ({label,important = false,like=false,onDelete,onToggleImpor
     //     SetLike((imp) => (!imp ));
     // };
     
-    let classNames = 'app-list-item d-flex justify-content-between';
+    let classNames = 'app-list-item d-flex justify-content-between list-group-item';
     if (important) {
         classNames += ' important';
     };

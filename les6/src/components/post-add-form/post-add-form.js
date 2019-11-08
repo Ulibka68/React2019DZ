@@ -1,6 +1,6 @@
 import React from "react";
 import {Input, Button } from "reactstrap";
-import style from "./PostAddForm.module.scss";
+import  "./PostAddForm.scss";
 
 export default class PostAddForm extends React.Component {
     constructor (props) {
@@ -15,6 +15,8 @@ export default class PostAddForm extends React.Component {
     onSubmit = (e) => {
         const {onAdd} = this.props;
         e.preventDefault();
+        // 2) Запретить создание пустых постов.
+        if (this.state.text === '') return;
         onAdd(this.state.text);
         this.setState({text : ""});
     }
@@ -29,7 +31,7 @@ export default class PostAddForm extends React.Component {
     
                 <Input 
                     placeholder="О чем Вы думаете ?" 
-                    className={style.new_post_label} 
+                    className="new-post-label"
                     onChange = {this.onInputChange}
                     value = {this.state.text}
                 />

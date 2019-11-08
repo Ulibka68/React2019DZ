@@ -104,7 +104,8 @@ export default class App extends React.Component {
         });
     };
 
-    onToggleImportant = (id ) => {
+
+    onToogleCommon = (id, fieldName) => {
         // console.log(`app onToggleImportant : ${id}`);
 
         this.setState (({data}) => {
@@ -112,25 +113,48 @@ export default class App extends React.Component {
 
             let data1 = [...data];
             if (index > -1) {
-                data1[index].important= ! ( !! data1[index].important);
+                data1[index][fieldName]= ! ( !! data1[index][fieldName]);
             };
             return {data : data1};
         } );
-    };
 
+    }
+
+    // 3) Сделать так, чтобы код в функциях onToggleImportant и onToggleLiked не дублировался.
+    onToggleImportant = (id ) => {
+        this.onToogleCommon(id,'important');
+    }
     onToggleLiked = (id) => {
-        // console.log(`app onToggleLiked : ${id}`);
+        this.onToogleCommon(id,'like');
+    }
 
-        this.setState (({data}) => {
-            const index = data.findIndex ( el => (el.key === id));
+    // onToggleImportant = (id ) => {
+    //     // console.log(`app onToggleImportant : ${id}`);
 
-            let data1 = [...data];
-            if (index > -1) {
-                data1[index].like= ! ( !! data1[index].like);
-            };
-            return {data : data1};
-        } );
-    };
+    //     this.setState (({data}) => {
+    //         const index = data.findIndex ( el => (el.key === id));
+
+    //         let data1 = [...data];
+    //         if (index > -1) {
+    //             data1[index].important= ! ( !! data1[index].important);
+    //         };
+    //         return {data : data1};
+    //     } );
+    // };
+
+    // onToggleLiked = (id) => {
+    //     // console.log(`app onToggleLiked : ${id}`);
+
+    //     this.setState (({data}) => {
+    //         const index = data.findIndex ( el => (el.key === id));
+
+    //         let data1 = [...data];
+    //         if (index > -1) {
+    //             data1[index].like= ! ( !! data1[index].like);
+    //         };
+    //         return {data : data1};
+    //     } );
+    // };
 
     onUpdateSearch = (newTerm) => {
         this.setState({term : newTerm});

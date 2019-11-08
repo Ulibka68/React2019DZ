@@ -3,6 +3,7 @@ import React from "react";
 import { ListGroup } from 'reactstrap';
 
 import PostListItem from "../post-list-item/post-list-item";
+// import style from "./post-list.module.css";
 import "./post-list.css";
 
 // import FormEdit from "../modalForm/edit-form";
@@ -49,9 +50,11 @@ const PostList = ({posts, onDelete,onToggleImportant,onToggleLiked}) => {
     };
 
     CheckInputData();
-    
+    // const clazz = style.app_list + ' ' + style.list_group_item;
+    const clazz = ' app-list ';
+
     return (
-        <ListGroup className="app-list">
+        <ListGroup className={clazz}>
             
             {/* можно применить выражение прямо внутри */}
             {checkedPosts.map ( (post) => {
