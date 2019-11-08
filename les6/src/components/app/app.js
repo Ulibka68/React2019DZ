@@ -44,9 +44,28 @@ export default class App extends React.Component {
             {label : "1Going to learn react", important : true, key : 1},
             {label : "2Второй", important : false, key : 2},
             {label : "3Третий. I need break", important : false, key : 3}
-            ]
+            ],
+            term : '',
+            filter : 'all'
         };
     };
+
+    searchPosts(items, term) {
+        if (term.length === 0) {return items;}
+
+        return (items.filter ( (item) => {
+            return item.label.indexOf(term) > -1;
+        }));
+    }
+
+    filterPost(items,filter) {
+        if (filter === 'like') {
+            return (items.filter ( (item) => ( item.like) ));
+    
+        } else {
+            return items;
+        }
+    }
 
     countLiked() { 
         return (
@@ -113,17 +132,44 @@ export default class App extends React.Component {
         } );
     };
 
+    onUpdateSearch = (newTerm) => {
+        this.setState({term : newTerm});
+    }
+
+    onAllItems = () => {
+        this.setState({term : '', filter : ''});
+        
+    }
+
+    onLikedItems = ()=> {
+        this.setState({filter : 'like'});
+    }
 
     render() {
+        let  visiblePosts =[];
+        // if (this.state.filter === '') {
+        //     visiblePosts = this.searchPosts(this.state.data,this.state.term);
+        // } else {
+        //      visiblePosts = this.filterPost(this.state.data,'like');
+        // };
+
+        visiblePosts = this.filterPost (this.searchPosts(this.state.data,this.state.term), this.state.filter)
+
+        
+
         return (
             <AppBlock>
                 <AppHeader  countPost={this.countPosts()} countLiked ={this.countLiked()} />
                 <div className="search-panel d-flex">
-                    <SearchPanel/>
-                    <PostStatusFilter />
+                    <SearchPanel onUpdateSearch = {this.onUpdateSearch} startVal ={this.state.term}/>
+                    <PostStatusFilter 
+                        onAllItems={this.onAllItems} 
+                        onLikedItems = {this.onLikedItems} 
+                        filter = {this.state.filter}
+                    />
                 </div>
                 <PostList 
-                    posts = {this.state.data} 
+                    posts = {visiblePosts} 
                     onDelete = {this.deleteItem}
                     onToggleImportant={this.onToggleImportant}
                     onToggleLiked = {this.onToggleLiked}
