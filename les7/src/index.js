@@ -4,8 +4,7 @@ import App from './components/app';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
-import dataIceAndFire from "./services/getdata"
+// import dataIceAndFire from "./services/getdata"
+// dataIceAndFire.testApi1();
 
-dataIceAndFire.testApi1();
-
-// ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
