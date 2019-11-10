@@ -88,10 +88,11 @@ const SignupForm = () => {
         }}
         validationSchema={Yup.object({
           firstName: Yup.string()
-            .min(15, "Must be 15 characters or less")
+            .min(3, "Введите не менее 3 символов")
+            .max(10, "Имя не должно быть более 10 символов")
             .required("Required"),
           lastName: Yup.string()
-            .min(20, "Must be 20 characters or less")
+            .min(3, "Must be 20 characters or less")
             .required("Required"),
           email: Yup.string()
             .email("Invalid email addresss`")
@@ -112,7 +113,7 @@ const SignupForm = () => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
-          }, 400);
+          }, 1000);
         }}
       >
         <Form>
