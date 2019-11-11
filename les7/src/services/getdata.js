@@ -1,6 +1,7 @@
+
 async function getData(url,baseurl) {
     try {
-        // url = 'https://jsonplaceholder.typicode.com/posts/1';
+        // console.log(url);
 
         const responce = await fetch(url);
         if (!responce.ok) {
@@ -26,7 +27,9 @@ async function getData(url,baseurl) {
         //  console.log(regex[1]);
 
         let lastPage=0;
-        if ( regex.length > 1) { lastPage = regex[1]++;}
+        try {
+            if ( regex.length > 1) { lastPage = regex[1]++;}
+        } finally {};
 
 
         const json = await responce.json();
@@ -36,9 +39,39 @@ async function getData(url,baseurl) {
     }
 }
 
+async function getDataSimple(url) {
+    // console.log(url);
+    try {
+
+        const responce = await fetch(url);
+        if (!responce.ok) {
+            throw new Error('Ответ сети был не ok.');
+        }
+
+        const json = await responce.json();
+        return { JSON_promice : json , lastPage : 0};
+    } catch (error) {
+        console.error('Возникла проблема с вашим fetch запросом: ', error.message);
+    }
+}
+
 class DataIceAndFire {
+
+    constructor() {
+        this.getCountPages();
+    }
+
     baseUrl = 'https://www.anapioficeandfire.com/api/';
     resources = ['characters','books','houses'];
+
+    countCharactersPages=0;
+    countBooksPages =0;
+    countHousesPages = 0;
+
+    countCharacters=0;
+    countBooks =0;
+    countHouses = 0;
+
 
     //  ?page
     //  ?pageSize
@@ -49,12 +82,69 @@ class DataIceAndFire {
         return getData(url,this.baseUrl);
     }
 
+    getApiNumData (resourceNum,page,pageSize) {
+        const name = this.resources[resourceNum];
+        const url = `${this.baseUrl}${name}?page=${page}&pageSize=${pageSize}`;
+        return getData(url,this.baseUrl);
+    }
+
+    getApiNumDataID (resourceNum,ID) {
+        const name = this.resources[resourceNum];
+        const url = `${this.baseUrl}${name}/${ID}`;
+        return getDataSimple(url,this.baseUrl);
+    }
+
+    getRandomCharacter () {
+        if (this.countCharacters === 0 ) {
+            console.log('нет count');
+            return  Promise.resolve( {});
+        } else {
+            const ID = Math.floor(Math.random()* (this.countCharacters - 25) +25);
+            // console.log('ID ======== ',ID);
+            return (this.getApiNumDataID(0,ID)); 
+        }
+    }
+
+    transformCharacter(data) {
+        let {name, gender, born, died, culture } = data;
+        culture = culture ? culture:null;
+        name = name ? name:null;
+        gender = gender ? gender:null;
+        born = born ? born:null;
+        died = died ? died:null;
+
+        return {name, gender, born, died, culture }
+    }                
+
+    // получить количество страниц
+    
+    getCountPages() {
+        this.getApiNumData(0,1,10)
+            .then (data =>{this.countCharactersPages=data.lastPage; this.countCharacters = this.countCharactersPages*10;} );
+
+        this.getApiNumData(1,1,10)
+            .then (data =>{
+                        this.countBooksPages=data.lastPage;
+                        this.countBooks = this.countBooksPages*10;
+                    } );
+
+            this.getApiNumData(1,1,10)
+            .then (data =>{this.countHousesPages=data.lastPage; this.countHouses=this.countHousesPages*10;} );
+
+        }
+
     testApi1() {
-        let a = dataIceAndFire.getApiData('houses',1,10);
-        a.then( data => {
-            console.log(data)
-            console.log(data.JSON_promice[0]);
-        });
+        // let a = dataIceAndFire.getApiNumData(0,1,10);
+        // a.then( data => {
+        //     console.log(data)
+        //     console.log(data.JSON_promice[0]);
+        // });
+
+        setTimeout(() => {
+            console.log('delay --');
+            let b= dataIceAndFire.getRandomCharacter()
+                .then( data => console.log(data));
+        },1);
     }
 }
 
