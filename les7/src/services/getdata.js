@@ -59,13 +59,6 @@ async function getDataSimple(url) {
     // }
 }
 
-async function getDataSimple2(url) {
-
-        const responce = await fetch(url);
-        const json = await responce.json();
-        return json;
-}
-
 class DataIceAndFire {
 
     constructor() {
@@ -111,8 +104,12 @@ class DataIceAndFire {
             return  Promise.resolve( {});
         } else {
             let ID = Math.floor(Math.random()* (this.countCharacters - 25) +25);
+            
+            // ***********************************************************************************************
             // Чтобы получить ошибку необходимо раскоментировать строку
             // ID = 10000000;
+            
+            
             console.log('ID ======== ',ID);
             return (this.getApiNumDataID(0,ID)); 
         }
@@ -160,8 +157,8 @@ class DataIceAndFire {
 
     testApi1() {
 
-        let c =getDataSimple2('https://www.anapioficeandfire.com/api/');
-        console.log(c);
+        // let c =getDataSimple2('https://www.anapioficeandfire.com/api/');
+        // console.log(c);
 
         // let a = dataIceAndFire.getApiNumData(0,1,10);
         // // console.log(a);

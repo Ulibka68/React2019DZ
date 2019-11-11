@@ -10,12 +10,16 @@ export default class RandomChar extends Component {
         super(props);
 
 
+        this.state = {char : {}, book : {}, loading : true, error : false, errMsg : '', timerId : null};
+
         // нужно время дождаться пока придет общее количество страниц
         if (props.showRandom)  {
             let timerId = setInterval( () => {this.updateCharacter();},3000);
-            this.setState({timerId : timerId});
+            this.state.timerId = timerId;
             //  clearInterval
         }
+
+
         // setTimeout( () => {this.updateCharacter();},3000);
         
     }
@@ -28,7 +32,7 @@ export default class RandomChar extends Component {
     //     culture : null
     // }
 
-    state = {char : {}, book : {}, loading : true, error : false, errMsg : '', timerId : null};
+    
 
     onError = (err) => {
         // console.log (err.message);
@@ -37,6 +41,7 @@ export default class RandomChar extends Component {
 
     componentDidUpdate(prevProps) {
         // Популярный пример (не забудьте сравнить пропсы):
+        // console.log('componentDidUpdate : ',this.props.showRandom);
         if (! this.props.showRandom && this.state.timerId != null) {
             clearInterval(this.state.timerId);
             this.setState({timerId : null});
@@ -69,13 +74,14 @@ export default class RandomChar extends Component {
     }
 
     render() {
-        const { loading, error} = this.state;
-
+        let { loading, error} = this.state;
+        
         if (! this.props.showRandom ) {
             return <div></div>;
         }
         
         let InsideElm;
+        
         if (error ) {
              InsideElm = <ErrorComp errMSG={this.state.errMsg} />;
         } else {

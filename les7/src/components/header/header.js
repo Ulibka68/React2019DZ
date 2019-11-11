@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./header.module.scss"
 
-const Header = ({click}) => {
+const Header = ({click, showRandom}) => {
     
     const hrefConst = '#';
     return (
@@ -27,7 +27,7 @@ const Header = ({click}) => {
                         href={hrefConst}
                         onClick={click}
                     >
-                        Скрыть случайного персонажа
+                        {showRandom ? 'Скрыть случайного персонажа' : 'Показать случайного персонажа'}  
                     </a>  
                 </li>
             </div>

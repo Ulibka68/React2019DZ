@@ -19,7 +19,7 @@ render () {
     return (
         <> 
             <Container>
-                <Header click={this.onClick} />
+                <Header click={this.onClick} showRandom = {this.state.showRandomChar} />
             </Container>
             <Container>
                 <Row>
