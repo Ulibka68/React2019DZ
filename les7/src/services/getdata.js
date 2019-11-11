@@ -40,8 +40,11 @@ async function getData(url,baseurl) {
 }
 
 async function getDataSimple(url) {
+
+    // обработку ошибок отсюда необходимо передать на уровень компонента - где она будет подхватываться и выводиться в браузер
+
     // console.log(url);
-    try {
+    // try {
 
         const responce = await fetch(url);
         if (!responce.ok) {
@@ -50,9 +53,17 @@ async function getDataSimple(url) {
 
         const json = await responce.json();
         return { JSON_promice : json , lastPage : 0};
-    } catch (error) {
-        console.error('Возникла проблема с вашим fetch запросом: ', error.message);
-    }
+
+    // } catch (error) {
+    //     console.error('Возникла проблема с вашим fetch запросом: ', error.message);
+    // }
+}
+
+async function getDataSimple2(url) {
+
+        const responce = await fetch(url);
+        const json = await responce.json();
+        return json;
 }
 
 class DataIceAndFire {
@@ -99,13 +110,16 @@ class DataIceAndFire {
             console.log('нет count');
             return  Promise.resolve( {});
         } else {
-            const ID = Math.floor(Math.random()* (this.countCharacters - 25) +25);
-            // console.log('ID ======== ',ID);
+            let ID = Math.floor(Math.random()* (this.countCharacters - 25) +25);
+            // Чтобы получить ошибку необходимо раскоментировать строку
+            // ID = 10000000;
+            console.log('ID ======== ',ID);
             return (this.getApiNumDataID(0,ID)); 
         }
     }
 
-    transformCharacter(data) {
+    transformCharacter(data = {}) {
+        // console.log(data);
         let {name, gender, born, died, culture } = data;
         culture = culture ? culture:null;
         name = name ? name:null;
@@ -115,6 +129,17 @@ class DataIceAndFire {
 
         return {name, gender, born, died, culture }
     }                
+
+
+    transformHouse(data = {}) {
+        let {name,region, words, titles, overlord, ancestralWeapons} =data;
+        return  {name,region, words, titles, overlord, ancestralWeapons} ;
+    }
+
+    transformBook(data = {}) {
+        let {name, numberOfPages,publiser,released} = data;
+        return {name, numberOfPages,publiser,released} ;
+    }
 
     // получить количество страниц
     
@@ -134,17 +159,22 @@ class DataIceAndFire {
         }
 
     testApi1() {
+
+        let c =getDataSimple2('https://www.anapioficeandfire.com/api/');
+        console.log(c);
+
         // let a = dataIceAndFire.getApiNumData(0,1,10);
+        // // console.log(a);
         // a.then( data => {
         //     console.log(data)
         //     console.log(data.JSON_promice[0]);
         // });
 
-        setTimeout(() => {
-            console.log('delay --');
-            let b= dataIceAndFire.getRandomCharacter()
-                .then( data => console.log(data));
-        },1);
+        // setTimeout(() => {
+        //     console.log('delay --');
+        //     dataIceAndFire.getRandomCharacter()
+        //         .then( data => console.log(data));
+        // },3000);
     }
 }
 
@@ -152,24 +182,3 @@ const dataIceAndFire = new DataIceAndFire();
 
 export default dataIceAndFire;
 
-/*
-characters:
-{
-    "url": "https://www.anapioficeandfire.com/api/characters/2135",
-    "name": "Zekko",
-    "gender": "Male",
-    "culture": "Dothraki",
-    "born": "",
-    "died": "",
-    "titles": ["Khal"],
-    "aliases": [""],
-    "father": "",
-    "mother": "",
-    "spouse": "",
-    "allegiances": [],
-    "books": ["https://www.anapioficeandfire.com/api/books/8"],
-    "povBooks": [],
-    "tvSeries": [""],
-    "playedBy": [""]
-}
-*/
