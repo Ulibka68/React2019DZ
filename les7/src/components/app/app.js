@@ -6,16 +6,25 @@ import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 
 
-const App = () => {
+class App extends React.Component {
+
+    state = {showRandomChar : true}
+
+    onClick= () => {
+        this.setState( (oldState) => ({showRandomChar : ! oldState.showRandomChar}) );
+
+    }
+
+render () {
     return (
         <> 
             <Container>
-                <Header />
+                <Header click={this.onClick} />
             </Container>
             <Container>
                 <Row>
                     <Col lg={{size: 5, offset: 0}}>
-                        <RandomChar/>
+                        <RandomChar showRandom = {this.state.showRandomChar}/>
                     </Col>
                 </Row>
                 <Row>
@@ -30,5 +39,5 @@ const App = () => {
         </>
     );
 };
-
+}
 export default App;

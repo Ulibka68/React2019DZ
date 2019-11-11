@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./header.module.scss"
 
-const Header = () => {
+const Header = ({click}) => {
     
     const hrefConst = '#';
     return (
@@ -20,6 +20,15 @@ const Header = () => {
                 </li>
                 <li>
                     <a href={hrefConst}>Books</a>   
+                </li>
+                <li>
+                    {/* <button>Скрыть случайного персонажа</button> */}
+                    <a 
+                        href={hrefConst}
+                        onClick={click}
+                    >
+                        Скрыть случайного персонажа
+                    </a>  
                 </li>
             </div>
         </div>

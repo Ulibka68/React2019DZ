@@ -11,7 +11,11 @@ export default class RandomChar extends Component {
 
 
         // нужно время дождаться пока придет общее количество страниц
-        setInterval( () => {this.updateCharacter();},3000);
+        if (props.showRandom)  {
+            let timerId = setInterval( () => {this.updateCharacter();},3000);
+            this.setState({timerId : timerId});
+            //  clearInterval
+        }
         // setTimeout( () => {this.updateCharacter();},3000);
         
     }
@@ -24,12 +28,26 @@ export default class RandomChar extends Component {
     //     culture : null
     // }
 
-    state = {char : {}, book : {}, loading : true, error : false, errMsg : ''};
+    state = {char : {}, book : {}, loading : true, error : false, errMsg : '', timerId : null};
 
     onError = (err) => {
         // console.log (err.message);
         this.setState({error : true, loading : false, errMsg : err.message});
     }
+
+    componentDidUpdate(prevProps) {
+        // Популярный пример (не забудьте сравнить пропсы):
+        if (! this.props.showRandom && this.state.timerId != null) {
+            clearInterval(this.state.timerId);
+            this.setState({timerId : null});
+        }
+
+        if ( this.props.showRandom && this.state.timerId === null) {
+            let timerId = setInterval( () => {this.updateCharacter();},3000);
+            this.setState({timerId : timerId});
+        }
+
+      }
 
     updateCharacter() {
         dataIceAndFire.getRandomCharacter()
@@ -52,6 +70,10 @@ export default class RandomChar extends Component {
 
     render() {
         const { loading, error} = this.state;
+
+        if (! this.props.showRandom ) {
+            return <div></div>;
+        }
         
         let InsideElm;
         if (error ) {
