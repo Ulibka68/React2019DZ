@@ -6,13 +6,10 @@ import CharDetails from '../charDetails';
 export default class CharacterPage extends React.Component  {
     
     state = {
-        
         selectedChar : null
-        
     }
 
     onCharSelected = (ID) => {
-        
         this.setState({selectedChar : ID});
     }
 
