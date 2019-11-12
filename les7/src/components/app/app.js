@@ -8,14 +8,23 @@ import CharDetails from '../charDetails';
 
 class App extends React.Component {
 
-    state = {showRandomChar : true}
+    state = {
+        showRandomChar : true,
+        selectedChar : null
+    }
 
     onClick= () => {
         this.setState( (oldState) => ({showRandomChar : ! oldState.showRandomChar}) );
 
     }
 
+    onCharSelected = (ID) => {
+        console.log('onCharSelected ',ID);
+        this.setState({selectedChar : ID});
+    }
+
 render () {
+    console.log('this.state.selectedChar : ',this.state.selectedChar);
     return (
         <> 
             <Container>
@@ -31,10 +40,10 @@ render () {
                 </Row>
                 <Row>
                     <Col md='6'>
-                        <ItemList />
+                        <ItemList onCharSelected={this.onCharSelected}/>
                     </Col>
                     <Col md='6'>
-                        <CharDetails />
+                        <CharDetails charID = {this.state.selectedChar}/>
                     </Col>
                 </Row>
             </Container>

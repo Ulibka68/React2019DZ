@@ -110,7 +110,7 @@ class DataIceAndFire {
             // ID = 10000000;
             
             
-            console.log('ID ======== ',ID);
+            // console.log('ID ======== ',ID);
             return (this.getApiNumDataID(0,ID)); 
         }
     }
