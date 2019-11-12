@@ -24,7 +24,9 @@ render () {
             <Container>
                 <Row>
                     <Col lg={{size: 5, offset: 0}}>
-                        <RandomChar showRandom = {this.state.showRandomChar}/>
+                        {/* // чтобы работал деструктор компонента нужно писать так */}
+                        {/* <RandomChar showRandom = {this.state.showRandomChar}/> */}
+                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
                     </Col>
                 </Row>
                 <Row>

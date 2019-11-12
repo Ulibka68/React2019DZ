@@ -9,47 +9,49 @@ export default class RandomChar extends Component {
     constructor(props) {
         super(props);
 
-
-        this.state = {char : {}, book : {}, loading : true, error : false, errMsg : '', timerId : null};
-
-        // нужно время дождаться пока придет общее количество страниц
-        if (props.showRandom)  {
-            let timerId = setInterval( () => {this.updateCharacter();},3000);
-            this.state.timerId = timerId;
-            //  clearInterval
-        }
-
-
-        // setTimeout( () => {this.updateCharacter();},3000);
-        
+        this.timerId = null;
+        this.state = {char : {}, book : {}, loading : true, error : false, errMsg : ''};
+     
     }
-
-    // state = {
-    //     name : null,
-    //     gender : null,
-    //     born : null,
-    //     died : null,
-    //     culture : null
-    // }
-
-    
 
     onError = (err) => {
         // console.log (err.message);
         this.setState({error : true, loading : false, errMsg : err.message});
     }
 
+
+    componentDidMount() {
+        // на всякий случай
+        if (this.timerId != null ) {
+             clearInterval(this.timerId);
+             this.timerId = null;
+        }
+        
+        // нужно время дождаться пока придет общее количество страниц
+        if (this.props.showRandom)  {
+            this.timerId = setInterval( () => {this.updateCharacter();},3000);
+        }
+    }
+
+    // получается типа деструктора - перед тем как компонент разрушится
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+        if (this.timerId != null ) {
+            clearInterval(this.timerId);
+            this.timerId = null;
+       }
+    }
+
     componentDidUpdate(prevProps) {
         // Популярный пример (не забудьте сравнить пропсы):
         // console.log('componentDidUpdate : ',this.props.showRandom);
-        if (! this.props.showRandom && this.state.timerId != null) {
-            clearInterval(this.state.timerId);
-            this.setState({timerId : null});
+        if (this.timerId != null ) {
+            clearInterval(this.timerId);
+            this.timerId = null;
         }
 
-        if ( this.props.showRandom && this.state.timerId === null) {
-            let timerId = setInterval( () => {this.updateCharacter();},3000);
-            this.setState({timerId : timerId});
+        if ( this.props.showRandom && this.timerId === null) {
+            this.timerId = setInterval( () => {this.updateCharacter();},3000);
         }
 
       }
