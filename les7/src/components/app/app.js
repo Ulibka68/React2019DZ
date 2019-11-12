@@ -2,15 +2,14 @@ import React from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
 import ErrorMessage from "../errorMessage/errorMessage";
+import CharacterPage from "../characterPage/characterPage";
 
 class App extends React.Component {
 
     state = {
         showRandomChar : true,
-        selectedChar : null,
+        
         error : false
     }
 
@@ -31,7 +30,7 @@ class App extends React.Component {
     }
 
 render () {
-    console.log('this.state.selectedChar : ',this.state.selectedChar);
+    // console.log('app this.state.selectedChar : ',this.state.selectedChar);
 
     if (this.state.error) {
         return <ErrorMessage />
@@ -50,14 +49,7 @@ render () {
                         {this.state.showRandomChar ? <RandomChar showRandom /> : null}
                     </Col>
                 </Row>
-                <Row>
-                    <Col md='6'>
-                        <ItemList onCharSelected={this.onCharSelected}/>
-                    </Col>
-                    <Col md='6'>
-                        <CharDetails charID = {this.state.selectedChar}/>
-                    </Col>
-                </Row>
+                <CharacterPage />
             </Container>
         </>
     );

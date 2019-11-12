@@ -94,6 +94,9 @@ class DataIceAndFire {
 
     getApiNumDataID (resourceNum,ID) {
         const name = this.resources[resourceNum];
+
+        // Для проверки ошибок
+        // const url = `${this.baseUrl}${name}/${ID}11`;
         const url = `${this.baseUrl}${name}/${ID}`;
         return getDataSimple(url,this.baseUrl);
     }

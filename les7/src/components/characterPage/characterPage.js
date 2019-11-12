@@ -1,19 +1,31 @@
 import React from "react";
-import {Col, Row, Container} from 'reactstrap';
+import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
+import ErrorMessage from "../errorMessage/errorMessage";
 
 export default class CharacterPage extends React.Component  {
     
     state = {
-        selectedChar : null
+        selectedChar : null,
+        error : false
     }
+
+    componentDidCatch() {
+        console.log('CharacterPage error --------------');
+        this.setState({error : true});
+    }
+
 
     onCharSelected = (ID) => {
         this.setState({selectedChar : ID});
     }
 
     render () {
+
+        if (this.state.error) {
+            return <ErrorMessage />
+        }
     
         return (
             <Row>

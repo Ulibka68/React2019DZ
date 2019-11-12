@@ -9,7 +9,7 @@ export default class ItemList extends Component {
     state = {charList : null};
 
     componentDidMount() {
-        dataIceAndFire.getApiNumData(0,5,10)
+        dataIceAndFire.getApiNumData(0,15,10)
             .then( data => {
                 const regex = /https:\/\/www\.anapioficeandfire\.com\/api\/characters\/(\d+)/;
                 
