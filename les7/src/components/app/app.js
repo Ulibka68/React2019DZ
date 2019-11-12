@@ -4,14 +4,21 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
-
+import ErrorMessage from "../errorMessage/errorMessage";
 
 class App extends React.Component {
 
     state = {
         showRandomChar : true,
-        selectedChar : null
+        selectedChar : null,
+        error : false
     }
+
+    componentDidCatch() {
+        console.log('error --------------');
+        this.setState({error : true});
+    }
+
 
     onClick= () => {
         this.setState( (oldState) => ({showRandomChar : ! oldState.showRandomChar}) );
@@ -25,6 +32,11 @@ class App extends React.Component {
 
 render () {
     console.log('this.state.selectedChar : ',this.state.selectedChar);
+
+    if (this.state.error) {
+        return <ErrorMessage />
+    }
+
     return (
         <> 
             <Container>
