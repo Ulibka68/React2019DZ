@@ -25,5 +25,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "browserslist": "^4.7.2",
+    "caniuse-lite": "^1.0.30001008"
+  }
 }

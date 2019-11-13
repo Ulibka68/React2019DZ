@@ -158,7 +158,43 @@ class DataIceAndFire {
 
         }
 
+    getCharacterPage = (pageNum) => {
+        // 0 - characters
+        return (this.getApiNumData(0,pageNum,10)
+        .then( data => {
+            const regex = /https:\/\/www\.anapioficeandfire\.com\/api\/characters\/(\d+)/;
+            
+            data.JSON_promice.map( item => {
+                item.ID = parseInt (item.url.match(regex)[1]);
+                return item;
+            });
+
+            // не будем показывать с пустым именем
+            return data.JSON_promice.filter( chrs => chrs.name.length > 0);
+        }));
+    }      
+    
+    getOneCharacter = (charId) => {
+        if (!charId) return Promise.resolve({});
+
+        return (
+        this.getApiNumDataID(0,charId)
+            .then (data => {
+                data.JSON_promice.ID = charId;
+                return data.JSON_promice;
+            })
+        );
+    }
+
     testApi1() {
+
+        let a = dataIceAndFire.getCharacterPage(2);
+        console.log(a);
+        a.then( data => {
+            console.log(data)
+        });
+
+
 
         // let c =getDataSimple2('https://www.anapioficeandfire.com/api/');
         // console.log(c);
