@@ -186,6 +186,35 @@ class DataIceAndFire {
         );
     }
 
+
+    getBooksPage = (pageNum) => {
+        // 0 - characters
+        return (this.getApiNumData(1,pageNum,10)
+        .then( data => {
+            const regex = /https:\/\/www\.anapioficeandfire\.com\/api\/books\/(\d+)/;
+            
+            data.JSON_promice.map( item => {
+                item.ID = parseInt (item.url.match(regex)[1]);
+                return item;
+            });
+
+            
+            return data.JSON_promice;
+        }));
+    }    
+
+    getOneBook = (charId) => {
+        if (!charId) return Promise.resolve({});
+
+        return (
+        this.getApiNumDataID(1,charId)
+            .then (data => {
+                data.JSON_promice.ID = charId;
+                return data.JSON_promice;
+            })
+        );
+    }
+
     testApi1() {
 
         let a = dataIceAndFire.getCharacterPage(2);

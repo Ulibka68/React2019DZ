@@ -39,6 +39,12 @@ render () {
         return <ErrorMessage />
     }
 
+    const styleDivider = {
+        color: "white",
+        textAlign : "center",
+        fontSize: "26px",
+      };
+
     return (
         <> 
             <Container>
@@ -65,6 +71,24 @@ render () {
                     fieldListOne = "Пол/gender/Born/born/Died/died/Culture/culture"
                     nameFieldOne = "name"
                 />
+
+                <Row>
+                    <Col md='12'>
+                        <span style={styleDivider}>КНИГИ</span>
+                    </Col>
+                </Row>
+
+
+                <CustomPage 
+                    getDataFuncList = {dataIceAndFire.getBooksPage}
+                    pageNum="1"
+                    fieldListList = "ID name authors"
+                    getDataFuncOne = {dataIceAndFire.getOneBook}
+                    fieldListOne = "Isbn/isbn/authors/authors/numberOfPages/numberOfPages"
+                    nameFieldOne = "name"
+                />
+
+
             </Container>
         </>
     );
