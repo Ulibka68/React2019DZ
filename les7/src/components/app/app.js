@@ -4,9 +4,8 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ErrorMessage from "../errorMessage/errorMessage";
 import dataIceAndFire from "../../services/getdata";
+import CustomPage from "../listWithDetails/customPage";
 
-import ItemListCustom from "../listWithDetails/itemListCustom";
-import ItemOneCustom from "../listWithDetails/itemOneCustom";
 // import CharacterPage from "../characterPage/characterPage";
 
 class App extends React.Component {
@@ -56,30 +55,16 @@ render () {
                 </Row>
 
                 {/* <CharacterPage /> */}
-                <Row>
-                    <Col md='6'>
-                    {/* // что будет в props :
-                    // 1. getDataFunc функция получения данных
-                    // 2. pageNum номер страницы
-                    // 3. fieldList ="aa bb" список полей для вывода через пробел
-                    // 4. primaryKeyField = название поля с ID */}
-                        <ItemListCustom 
-                            onCharSelected={this.onCharSelected}
-                            getDataFunc={dataIceAndFire.getCharacterPage}
-                            pageNum="15"
-                            fieldList = "ID name gender"
-                        />
-                    </Col>
-                    <Col md='6'>
-                        <ItemOneCustom 
-                            charID = {this.state.selectedChar}
-                            getDataFunc={dataIceAndFire.getOneCharacter}
-                            fieldList="Пол/gender/Born/born/Died/died/Culture/culture"
-                            nameField="name"
-                        />
-                    </Col>
-                </Row>
-            
+
+                {/* Characters */}
+                <CustomPage 
+                    getDataFuncList = {dataIceAndFire.getCharacterPage}
+                    pageNum="15"
+                    fieldListList = "ID name gender"
+                    getDataFuncOne = {dataIceAndFire.getOneCharacter}
+                    fieldListOne = "Пол/gender/Born/born/Died/died/Culture/culture"
+                    nameFieldOne = "name"
+                />
             </Container>
         </>
     );
