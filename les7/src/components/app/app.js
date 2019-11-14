@@ -6,7 +6,7 @@ import ErrorMessage from "../errorMessage/errorMessage";
 import dataIceAndFire from "../../services/getdata";
 import CustomPage from "../listWithDetails/customPage";
 
-// import CharacterPage from "../characterPage/characterPage";
+import CharacterPage from "../characterPage/characterPage";
 
 class App extends React.Component {
 
@@ -55,18 +55,20 @@ render () {
             </Container>
             <Container>
                 <Row>
-                    <Col lg={{size: 5, offset: 0}}>
+                    <Col lg={{size: 7, offset: 0}}>
                         {/* // чтобы работал деструктор компонента нужно писать так */}
                         {/* <RandomChar showRandom = {this.state.showRandomChar}/> */}
                         
-                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
+                        {/* {this.state.showRandomChar ? <RandomChar showRandom /> : null} */}
                     </Col>
                 </Row>
 
-                {/* <CharacterPage /> */}
+                <CharacterPage />
 
                 {/* Characters */}
-                <CustomPage 
+
+
+                {/* <CustomPage 
                     getDataFuncList = {dataIceAndFire.getCharacterPage}
                     pageNum="15"
                     fieldListList = "ID name gender"
@@ -106,7 +108,7 @@ render () {
                     fieldListOne = "region/region/coatOfArms/coatOfArms/founder/founder"
                     nameFieldOne = "name"
                     promtThenEmpty = 'Пожалуйста, выберите дом'
-                />
+                /> */}
 
             </Container>
         </>

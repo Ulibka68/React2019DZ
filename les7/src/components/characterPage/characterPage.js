@@ -1,8 +1,10 @@
 import React from "react";
 import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+
 import ErrorMessage from "../errorMessage/errorMessage";
+import  CharDetails,{Field} from "../charDetails/charDetails";
+
 
 export default class CharacterPage extends React.Component  {
     
@@ -17,7 +19,7 @@ export default class CharacterPage extends React.Component  {
     }
 
 
-    onCharSelected = (ID) => {
+    onItemSelected = (ID) => {
         this.setState({selectedChar : ID});
     }
 
@@ -30,10 +32,13 @@ export default class CharacterPage extends React.Component  {
         return (
             <Row>
                 <Col md='6'>
-                    <ItemList onCharSelected={this.onCharSelected}/>
+                    <ItemList onItemSelected={this.onItemSelected}/>
                 </Col>
                 <Col md='6'>
-                    <CharDetails charID = {this.state.selectedChar}/>
+                    <CharDetails charID = {this.state.selectedChar}>
+                        <Field field = 'gender' label = 'Пол' />
+                        <Field field = 'born' label = 'Born' />
+                    </CharDetails>
                 </Col>
             </Row>
         );
