@@ -59,7 +59,7 @@ render () {
                         {/* // чтобы работал деструктор компонента нужно писать так */}
                         {/* <RandomChar showRandom = {this.state.showRandomChar}/> */}
                         
-                        {/* {this.state.showRandomChar ? <RandomChar showRandom /> : null} */}
+                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
                     </Col>
                 </Row>
 
@@ -76,6 +76,7 @@ render () {
                     fieldListOne = "Пол/gender/Born/born/Died/died/Culture/culture"
                     nameFieldOne = "name"
                 />
+                */}
 
                 <Row>
                     <Col md='12'>
@@ -108,7 +109,7 @@ render () {
                     fieldListOne = "region/region/coatOfArms/coatOfArms/founder/founder"
                     nameFieldOne = "name"
                     promtThenEmpty = 'Пожалуйста, выберите дом'
-                /> */}
+                /> 
 
             </Container>
         </>

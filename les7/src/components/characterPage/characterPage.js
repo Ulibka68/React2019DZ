@@ -38,6 +38,9 @@ export default class CharacterPage extends React.Component  {
                     <CharDetails charID = {this.state.selectedChar}>
                         <Field field = 'gender' label = 'Пол' />
                         <Field field = 'born' label = 'Born' />
+                        <Field field = 'died' label = 'Died' />
+                        <Field field = 'culture' label = 'Culture' />
+                        
                     </CharDetails>
                 </Col>
             </Row>
