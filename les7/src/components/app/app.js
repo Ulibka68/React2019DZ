@@ -40,9 +40,12 @@ render () {
     }
 
     const styleDivider = {
-        color: "white",
+        color: "blue",
         textAlign : "center",
         fontSize: "26px",
+        backgroundColor : "lightGray",
+        margin : "20px 0px",
+        padding : "10px 7px"
       };
 
     return (
@@ -56,7 +59,7 @@ render () {
                         {/* // чтобы работал деструктор компонента нужно писать так */}
                         {/* <RandomChar showRandom = {this.state.showRandomChar}/> */}
                         
-                        {/* {this.state.showRandomChar ? <RandomChar showRandom /> : null} */}
+                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
                     </Col>
                 </Row>
 
@@ -86,8 +89,24 @@ render () {
                     getDataFuncOne = {dataIceAndFire.getOneBook}
                     fieldListOne = "Isbn/isbn/authors/authors/numberOfPages/numberOfPages"
                     nameFieldOne = "name"
+                    promtThenEmpty = 'Пожалуйста, выберите книгу'
                 />
 
+                <Row>
+                    <Col md='12'>
+                        <span style={styleDivider}>ДОМА</span>
+                    </Col>
+                </Row>
+
+                <CustomPage 
+                    getDataFuncList = {dataIceAndFire.getHousesPage}
+                    pageNum="1"
+                    fieldListList = "ID name region"
+                    getDataFuncOne = {dataIceAndFire.getOneHouse}
+                    fieldListOne = "region/region/coatOfArms/coatOfArms/founder/founder"
+                    nameFieldOne = "name"
+                    promtThenEmpty = 'Пожалуйста, выберите дом'
+                />
 
             </Container>
         </>

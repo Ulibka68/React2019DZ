@@ -39,7 +39,7 @@ export default class CustomPage extends React.Component  {
             return <ErrorMessage />
         }
     
-        const {getDataFuncList,pageNum,fieldListList,getDataFuncOne,fieldListOne,nameFieldOne} = this.props;
+        const {getDataFuncList,pageNum,fieldListList,getDataFuncOne,fieldListOne,nameFieldOne,promtThenEmpty} = this.props;
         // Перечень props :
         // getDataFuncList :   getDataFunc={dataIceAndFire.getCharacterPage}
         // pageNum             pageNum="15"
@@ -72,6 +72,7 @@ export default class CustomPage extends React.Component  {
                     getDataFunc={getDataFuncOne}
                     fieldList={fieldListOne}
                     nameField={nameFieldOne}
+                    promtThenEmpty = {promtThenEmpty}
                 />
             </Col>
         </Row>

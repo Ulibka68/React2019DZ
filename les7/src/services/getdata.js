@@ -215,6 +215,35 @@ class DataIceAndFire {
         );
     }
 
+    getHousesPage = (pageNum) => {
+        // 0 - characters
+        return (this.getApiNumData(2,pageNum,10)
+        .then( data => {
+            const regex = /https:\/\/www\.anapioficeandfire\.com\/api\/houses\/(\d+)/;
+            
+            data.JSON_promice.map( item => {
+                item.ID = parseInt (item.url.match(regex)[1]);
+                return item;
+            });
+
+            
+            return data.JSON_promice;
+        }));
+    }    
+
+    getOneHouse = (charId) => {
+        if (!charId) return Promise.resolve({});
+
+        return (
+        this.getApiNumDataID(2,charId)
+            .then (data => {
+                data.JSON_promice.ID = charId;
+                return data.JSON_promice;
+            })
+        );
+    }
+
+
     testApi1() {
 
         let a = dataIceAndFire.getCharacterPage(2);

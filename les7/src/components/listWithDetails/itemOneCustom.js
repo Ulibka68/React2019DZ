@@ -11,6 +11,7 @@ import ErrMsg from "../errorMessage/errorMessage";
 // 3. fieldList ="aa bb" список полей для вывода через пробел
 // 4. primaryKeyField = название поля с ID
 // nameField - название главного поля
+// promtThenEmpty = Пожалуйста, выберите персонажа
 
 export default class ItemOneCustom extends Component {
 
@@ -68,8 +69,10 @@ export default class ItemOneCustom extends Component {
         }
 
         if (! this.state.char) {
+            // promtThenEmpty = Пожалуйста, выберите персонажа
+            const {promtThenEmpty = 'Пожалуйста, выберите персонажа'} = this.props;
             return (
-                <span className={style.select_error}>Пожалуйста, выберите персонажа</span>
+                <span className={style.select_error}>{promtThenEmpty}</span>
             );
         }
 
