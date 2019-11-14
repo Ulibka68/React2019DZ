@@ -8,6 +8,10 @@ import CustomPage from "../listWithDetails/customPage";
 
 import CharacterPage from "../characterPage/characterPage";
 
+import f from '../itemListHOC/itemListHOC';
+
+const ItmLSTHOC = f();
+
 class App extends React.Component {
 
     state = {
@@ -56,14 +60,17 @@ render () {
             <Container>
                 <Row>
                     <Col lg={{size: 7, offset: 0}}>
-                        {/* // чтобы работал деструктор компонента нужно писать так */}
-                        {/* <RandomChar showRandom = {this.state.showRandomChar}/> */}
+                        {/* ---------// чтобы работал деструктор компонента нужно писать так */}
+                        {/* ----------<RandomChar showRandom = {this.state.showRandomChar}/> */}
                         
-                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
+                        {/* {this.state.showRandomChar ? <RandomChar showRandom /> : null} */}
                     </Col>
                 </Row>
 
-                <CharacterPage />
+
+                <ItmLSTHOC />
+
+                {/* <CharacterPage /> */}
 
                 {/* Characters */}
 
@@ -78,7 +85,7 @@ render () {
                 />
                 */}
 
-                <Row>
+                {/* <Row>
                     <Col md='12'>
                         <span style={styleDivider}>КНИГИ</span>
                     </Col>
@@ -109,7 +116,7 @@ render () {
                     fieldListOne = "region/region/coatOfArms/coatOfArms/founder/founder"
                     nameFieldOne = "name"
                     promtThenEmpty = 'Пожалуйста, выберите дом'
-                /> 
+                />  */}
 
             </Container>
         </>

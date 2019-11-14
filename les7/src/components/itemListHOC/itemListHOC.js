@@ -1,10 +1,28 @@
 import React, {Component} from 'react';
-import './itemList.css';
+import './itemListHOC.css';
 import dataIceAndFire from "../../services/getdata";
 import Spinner from "../spinner/spinner";
 
+// Было
+// 1. получить данные 
+// 2. Установить в state
+// 
+// render
+//   если данных нет - то spiner
 
-export default class ItemList extends Component {
+// Сделаем
+// f(1)(2) - f(1) вызов ф-ии которая вернет ф-ию (2) - аргумент для второй ф-ии
+
+const f = () => {
+    return class extends Component {
+        render() {
+            return ( <h1> HELLO***************</h1>);
+        }
+    }
+}
+export default f();
+
+class ItemListHOC extends Component {
     
     state = {charList : null};
 
