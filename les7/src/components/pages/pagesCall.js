@@ -2,6 +2,7 @@ import React from "react";
 import CustomPage from "../listWithDetails/customPage";
 import dataIceAndFire from "../../services/getdata";
 
+
 function BooksPage () {
     return (
         <CustomPage 
@@ -31,4 +32,18 @@ function HousesPage() {
     )
 }
 
-export {BooksPage,HousesPage};
+
+function CharacterPagesCust() {
+    return (                
+                 <CustomPage 
+                    getDataFuncList = {dataIceAndFire.getCharacterPage}
+                    pageNum="15"
+                    fieldListList = "ID name gender"
+                    getDataFuncOne = {dataIceAndFire.getOneCharacter}
+                    fieldListOne = "Пол/gender/Born/born/Died/died/Culture/culture/ID/ID"
+                    nameFieldOne = "name"
+                />
+    )                
+}                
+
+export {BooksPage,HousesPage, CharacterPagesCust};

@@ -69,7 +69,7 @@ export default class RandomPage extends React.Component  {
                 <ItemOneCustom 
                     charID = {this.state.selectedChar}
                     getDataFunc={dataIceAndFire.getOneCharacter}
-                    fieldList = "Пол/gender/Born/born/Died/died/Culture/culture"
+                    fieldList = "Пол/gender/Born/born/Died/died/Culture/culture/ID/ID"
                     nameField="name"
                     promtThenEmpty="случайный персонаж"
                     

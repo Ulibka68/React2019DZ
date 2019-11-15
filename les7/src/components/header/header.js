@@ -1,5 +1,6 @@
 import React from 'react';
-import style from "./header.module.scss"
+import style from "./header.module.scss";
+import {Link} from "react-router-dom";
 
 const Header = ({click, showRandom}) => {
     
@@ -7,19 +8,19 @@ const Header = ({click, showRandom}) => {
     return (
         <div className={style.HeaderBlock}>
             <div className ={style.HeaderTitle}>
-                <a href={hrefConst}>
+                <Link to ='/'>
                 Game of Thrones DB
-                </a>
+                </Link>
             </div>
             <div className ={style.HeaderLinks}>
                 <li>
-                    <a href={hrefConst}>Characters</a>
+                    <Link to = '/characters'>Characters</Link>
                 </li>
                 <li>
-                    <a href={hrefConst}>Houses</a>
+                    <Link to ='/houses'>Houses</Link>
                 </li>
                 <li>
-                    <a href={hrefConst}>Books</a>   
+                    <Link to='/books'>Books</Link>   
                 </li>
                 <li>
                     {/* <button>Скрыть случайного персонажа</button> */}
