@@ -1,6 +1,7 @@
 import React from "react";
 import CustomPage from "../listWithDetails/customPage";
 import dataIceAndFire from "../../services/getdata";
+import ItemListCustomForRoute from "../listWithDetails/itemListCustom_for_Route";
 
 
 function BooksPage () {
@@ -44,6 +45,16 @@ function CharacterPagesCust() {
                     nameFieldOne = "name"
                 />
     )                
-}                
+}   
 
-export {BooksPage,HousesPage, CharacterPagesCust};
+function BookListPage({pageNum = 1,onBookSelected }) {
+return(
+    <ItemListCustomForRoute 
+        getDataFunc = {dataIceAndFire.getBooksPage}
+        pageNum={pageNum}
+        fieldList = "ID name authors"
+        onCharSelected = {onBookSelected}
+    />
+)}
+
+export {BooksPage,HousesPage, CharacterPagesCust,BookListPage};

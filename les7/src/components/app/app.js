@@ -7,7 +7,7 @@ import Header from '../header';
 import ErrorMessage from "../errorMessage/errorMessage";
 
 import RandomPage from "../randomChar/randomPage";
-import  {BooksPage,HousesPage, CharacterPagesCust} from "../pages/pagesCall";
+import  {BooksPage,HousesPage, CharacterPagesCust,BookListPage} from "../pages/pagesCall";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import BookOne from "../pages/booksItem";
 
@@ -60,6 +60,17 @@ render () {
                 <Route path='/houses' component = {HousesPage}/>
                 
                 <Route path='/books' exact component = {BooksPage}/>
+
+                <Route path='/bookslist/:id' exact render = {
+                    ({match}) => {
+                        return (
+                            <BookListPage pageNum = {match.params.id}  />
+                        );}
+                }/>
+
+                {/* <Route path='/bookslist' exact component = { BookListPage} /> */}
+
+
                 <Route path='/books/:id' render = {
                     ({match,location,history})=> {
                        return  <BookOne bookID={match.params.id} />
