@@ -8,9 +8,9 @@ import CustomPage from "../listWithDetails/customPage";
 
 import CharacterPage from "../characterPage/characterPage";
 
-import f from '../itemListHOC/itemListHOC';
+import CharacterPageHOC from "../itemListHOC/characterPageHOC";
 
-const ItmLSTHOC = f();
+
 
 class App extends React.Component {
 
@@ -63,18 +63,16 @@ render () {
                         {/* ---------// чтобы работал деструктор компонента нужно писать так */}
                         {/* ----------<RandomChar showRandom = {this.state.showRandomChar}/> */}
                         
-                        {/* {this.state.showRandomChar ? <RandomChar showRandom /> : null} */}
+                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
                     </Col>
                 </Row>
 
+                {/* пример страницы в которой используется High order component HOC  */}
+                {/* <CharacterPageHOC /> */}
 
-                <ItmLSTHOC />
+                <CharacterPage />
 
-                {/* <CharacterPage /> */}
-
-                {/* Characters */}
-
-
+                {/* Этот варинат показывает персонажа на основе CustomPage */}
                 {/* <CustomPage 
                     getDataFuncList = {dataIceAndFire.getCharacterPage}
                     pageNum="15"
@@ -85,11 +83,12 @@ render () {
                 />
                 */}
 
-                {/* <Row>
+                <Row>
                     <Col md='12'>
                         <span style={styleDivider}>КНИГИ</span>
                     </Col>
                 </Row>
+
 
 
                 <CustomPage 
@@ -116,7 +115,7 @@ render () {
                     fieldListOne = "region/region/coatOfArms/coatOfArms/founder/founder"
                     nameFieldOne = "name"
                     promtThenEmpty = 'Пожалуйста, выберите дом'
-                />  */}
+                />  
 
             </Container>
         </>
