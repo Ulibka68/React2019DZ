@@ -13,7 +13,7 @@ import CharacterPage from "../characterPage/characterPage";
 // eslint-disable-next-line
 import CharacterPageHOC from "../itemListHOC/characterPageHOC";
 import RandomPage from "../randomChar/randomPage";
-
+import  {BooksPage,HousesPage} from "../pages/pagesCall";
 
 
 class App extends React.Component {
@@ -104,15 +104,7 @@ render () {
 
 
 
-                <CustomPage 
-                    getDataFuncList = {dataIceAndFire.getBooksPage}
-                    pageNum="1"
-                    fieldListList = "ID name authors"
-                    getDataFuncOne = {dataIceAndFire.getOneBook}
-                    fieldListOne = "Isbn/isbn/authors/authors/numberOfPages/numberOfPages"
-                    nameFieldOne = "name"
-                    promtThenEmpty = 'Пожалуйста, выберите книгу'
-                />
+                <BooksPage />
 
                 <Row>
                     <Col md='12'>
@@ -120,16 +112,8 @@ render () {
                     </Col>
                 </Row>
 
-                <CustomPage 
-                    getDataFuncList = {dataIceAndFire.getHousesPage}
-                    pageNum="1"
-                    fieldListList = "ID name region"
-                    getDataFuncOne = {dataIceAndFire.getOneHouse}
-                    fieldListOne = "region/region/coatOfArms/coatOfArms/founder/founder"
-                    nameFieldOne = "name"
-                    promtThenEmpty = 'Пожалуйста, выберите дом'
-                />  
-
+                <HousesPage />
+                
             </Container>
         </>
     );
