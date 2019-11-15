@@ -2,18 +2,16 @@ import React from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 
-// eslint-disable-next-line
-import RandomChar from '../randomChar';
 import ErrorMessage from "../errorMessage/errorMessage";
 import dataIceAndFire from "../../services/getdata";
 import CustomPage from "../listWithDetails/customPage";
 
 import CharacterPage from "../characterPage/characterPage";
 
-// eslint-disable-next-line
-import CharacterPageHOC from "../itemListHOC/characterPageHOC";
 import RandomPage from "../randomChar/randomPage";
 import  {BooksPage,HousesPage} from "../pages/pagesCall";
+
+import {BrowserRouter as Router} from "react-router-dom";
 
 
 class App extends React.Component {
