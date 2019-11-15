@@ -1,6 +1,8 @@
 import React from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
+
+// eslint-disable-next-line
 import RandomChar from '../randomChar';
 import ErrorMessage from "../errorMessage/errorMessage";
 import dataIceAndFire from "../../services/getdata";
@@ -8,7 +10,9 @@ import CustomPage from "../listWithDetails/customPage";
 
 import CharacterPage from "../characterPage/characterPage";
 
+// eslint-disable-next-line
 import CharacterPageHOC from "../itemListHOC/characterPageHOC";
+import RandomPage from "../randomChar/randomPage";
 
 
 
@@ -58,12 +62,21 @@ render () {
                 <Header click={this.onClick} showRandom = {this.state.showRandomChar} />
             </Container>
             <Container>
-                <Row>
-                    <Col lg={{size: 7, offset: 0}}>
+                {/* <Row> */}
+                    {/* <Col lg={{size: 7, offset: 0}}> */}
                         {/* ---------// чтобы работал деструктор компонента нужно писать так */}
                         {/* ----------<RandomChar showRandom = {this.state.showRandomChar}/> */}
                         
-                        {this.state.showRandomChar ? <RandomChar showRandom /> : null}
+                        {/* {this.state.showRandomChar ? <RandomChar showRandom /> : null} */}
+                        
+                    {/* </Col> */}
+                {/* </Row> */}
+
+                {this.state.showRandomChar ? <RandomPage /> : null }
+
+                <Row>
+                    <Col md='12'>
+                        <span style={styleDivider}>ПЕРСОНАЖИ</span>
                     </Col>
                 </Row>
 

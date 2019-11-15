@@ -29,12 +29,23 @@ export default class ItemOneCustom extends Component {
             this.fldsArray.push(fld);
         }
 
-        console.log('ItemOneCustom  constructor : ',this.fldsArray);
+        // console.log('ItemOneCustom  constructor : ',this.props);
+        // console.log('ItemOneCustom  constructor : ',this.fldsArray);
+
+        this.state = {char : null, updateState : false, errorState : false};
+
+        // поскольку componentDidUpdate не вызывается при первом рендере
+        if (this.props.charID ) {
+            this.state = {char : null, updateState : true, errorState : false};
+            this.updateChar();
+        }
+
+        
     }
 
-    state = {char : null, updateState : false, errorState : false};
-
     
+
+    // не вызывается при первом рендере
     componentDidUpdate(prevProps, prevState, snapshot) {
         // console.log('CharDetails DidUpdate',this.props, prevProps);
         if (this.props.charID !== prevProps.charID) {

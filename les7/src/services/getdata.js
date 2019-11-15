@@ -118,6 +118,11 @@ class DataIceAndFire {
         }
     }
 
+    getRandomCharacterNumber () {
+        if (this.countCharacters === 0 ) return 0;
+        return Math.floor(Math.random()* (this.countCharacters - 25) +25);
+    }    
+
     transformCharacter(data = {}) {
         // console.log(data);
         let {name, gender, born, died, culture } = data;
