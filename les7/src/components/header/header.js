@@ -23,7 +23,12 @@ const Header = ({click, showRandom}) => {
                     <Link to='/books'>Books</Link>   
                 </li>
                 <li>
-                    {/* <button>Скрыть случайного персонажа</button> */}
+                    <Link to='/bookslist/1'>BooksList</Link>   
+                </li>
+
+                
+                <li>
+                    
                     <a 
                         href={hrefConst}
                         onClick={click}
