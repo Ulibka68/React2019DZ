@@ -8,9 +8,10 @@ import ErrorMessage from "../errorMessage/errorMessage";
 
 import RandomPage from "../randomChar/randomPage";
 import  {BooksPage,HousesPage, CharacterPagesCust,BookListPage} from "../pages/pagesCall";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route,Switch} from "react-router-dom";
 import BookOne from "../pages/booksItem";
 import StartPage from "../pages/startPage";
+import Page404 from "../pages/page404";
 
 
 class App extends React.Component {
@@ -56,27 +57,36 @@ render () {
             <Container>
                 {this.state.showRandomChar ? <RandomPage /> : null }
 
-                <Route path='/' exact component = {StartPage}/>
-                <Route path='/characters' component = {CharacterPagesCust}/>
-                <Route path='/houses' component = {HousesPage}/>
-                
-                <Route path='/books' exact component = {BooksPage}/>
+                <Switch>
+                    <Route path='/' exact component = {StartPage}/>
+                    <Route path='/characters' component = {CharacterPagesCust}/>
+                    <Route path='/houses' component = {HousesPage}/>
+                    
+                    <Route path='/books' exact component = {BooksPage}/>
 
-                <Route path='/bookslist/:id' exact render = {
-                    ({match}) => {
-                        return (
-                            <BookListPage pageNum = {match.params.id}  />
-                        );}
-                }/>
+                    <Route path='/bookslist/:id' exact render = {
+                        ({match}) => {
+                            return (
+                                <BookListPage pageNum = {match.params.id}  />
+                            );}
+                    }/>
 
-                {/* <Route path='/bookslist' exact component = { BookListPage} /> */}
+                    {/* <Route path='/bookslist' exact component = { BookListPage} /> */}
 
 
-                <Route path='/books/:id' render = {
-                    ({match,location,history})=> {
-                       return  <BookOne bookID={match.params.id} />
-                    }
-                } />
+                    <Route path='/books/:id' render = {
+                        ({match,location,history})=> {
+                        return  <BookOne bookID={match.params.id} />
+                        }
+                    } />
+
+                    {/*  если ничего не найдено path можно опустить  */}
+                    <Route  render = {
+                        ({match,location,history})=> {
+                        return  <Page404 match={match} location={location} history={history} />
+                        }
+                    } />
+                </Switch>
                 
             </Container>
         </div>

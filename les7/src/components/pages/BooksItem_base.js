@@ -45,6 +45,13 @@ export default class  extends Component {
         
     }
 
+    books_titles = {
+        "1" : "01 A Game of Thrones.jpg",
+        "2" : "02 A Clash of Kings.jpg",
+        "3" : "03 A Storm of Swords.jpg",
+        "4" : "04 The Hedge Knight.jpg"
+    }
+
     
 
     // не вызывается при первом рендере
@@ -64,7 +71,12 @@ export default class  extends Component {
 
         this.props.getDataFunc(charId)
         .then ( data => {
+
+            let book_title = this.books_titles[data.ID];
+            if (! book_title) book_title = "tron.jpeg";
+            data.book_title = book_title;
             // console.log('ItemOneCustom updateChar : ',data);
+
             this.setState({char : data, updateState : false, errorState : false});
            }
         )
@@ -105,18 +117,29 @@ export default class  extends Component {
                     <h4>{char[nameField]}</h4>
                 </Row>
                 <Row>
-                    <ul className="list-group list-group-flush">
-                        {this.fldsArray.map( fld => (
-                            char[fld.fldName] ?
-                                <li key={fld.fldName} className="list-group-item d-flex justify-content-between">
-                                    <span className="term">{fld.fldDesc}</span>
-                                    <span>{char[fld.fldName]}</span>
-                                </li>
-                            : null
-                        ))}
-
-                    </ul>
+                    <Col lg="3">
+                        Обложка книги
+                        <img 
+                            src={process.env.PUBLIC_URL + '/img/' + char.book_title} 
+                            className={style.img_book }
+                            alt="картинка книги"
+                        />
+                        
+                    </Col >
+                    <Col lg="9">
+                        <ul className="list-group list-group-flush">
+                            {this.fldsArray.map( fld => (
+                                char[fld.fldName] ?
+                                    <li key={fld.fldName} className="list-group-item d-flex justify-content-between">
+                                        <span className="term">{fld.fldDesc}</span>
+                                        <span>{char[fld.fldName]}</span>
+                                    </li>
+                                : null
+                            ))}
+                        </ul>
+                    </Col>
                 </Row>
+                <Row>--</Row>
             </Container>
         );
     }
