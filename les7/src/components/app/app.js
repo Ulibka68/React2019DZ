@@ -10,12 +10,13 @@ import RandomPage from "../randomChar/randomPage";
 import  {BooksPage,HousesPage, CharacterPagesCust,BookListPage} from "../pages/pagesCall";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import BookOne from "../pages/booksItem";
+import StartPage from "../pages/startPage";
 
 
 class App extends React.Component {
 
     state = {
-        showRandomChar : true,
+        showRandomChar : false,
         
         error : false
     }
@@ -55,7 +56,7 @@ render () {
             <Container>
                 {this.state.showRandomChar ? <RandomPage /> : null }
 
-                <Route path='/' exact component = {()=> <h1>Welcome TO GOT</h1>}/>
+                <Route path='/' exact component = {StartPage}/>
                 <Route path='/characters' component = {CharacterPagesCust}/>
                 <Route path='/houses' component = {HousesPage}/>
                 
