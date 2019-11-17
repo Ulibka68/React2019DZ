@@ -1,5 +1,5 @@
 import React from "react";
-import ItemOneCustom from "../listWithDetails/itemOneCustom";
+import BookOneBase from "./BooksItem_base";
 import dataIceAndFire from "../../services/getdata";
 
 
@@ -12,7 +12,7 @@ import dataIceAndFire from "../../services/getdata";
 // promtThenEmpty = Пожалуйста, выберите персонажа
 export default function BookOne({bookID}) {
     return (
-        <ItemOneCustom 
+        <BookOneBase 
         
             getDataFunc = {dataIceAndFire.getOneBook}
             charID = {bookID}
