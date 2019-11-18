@@ -18,6 +18,7 @@ export default function ItemOneCustomHook (props) {
         // Пол/gender/Born/born/Died/died/Culture/culture
         const fld = props.fieldList || 'Пол/gender';
         let pairs =fld.split('/');
+        let useEffectStart = false;
         
         let fldsArray=[];
         
@@ -32,25 +33,35 @@ export default function ItemOneCustomHook (props) {
         const [errorState,SetErrorState] = useState(false);
         const [char, SetChar] = useState(null);
 
-        console.log('ItemOneCustom   : ',props.charID);
+        console.log('ItemOneCustom  constructor ==== : ',props.charID);
        
 
         function updateChar()  {
             
             const charId = props.charID;
             if (!charId) return;
-            console.log('updateChar ', charId);
+            console.log('ItemOneCustom updateChar step 1 ', charId);
             SetUpdateState(true);
             SetErrorState(false);
     
             props.getDataFunc(charId)
             .then ( data => {
-                console.log('ItemOneCustom updateChar : ',charId,' ',data);
                 
+                console.log('ItemOneCustom updateChar step 2');
+                if (useEffectStart) {
+                    console.log('ItemOneCustom updateChar step 3');
                 
-                SetUpdateState(false);
-                SetErrorState(false);
-                SetChar(data);
+                    SetUpdateState(false);
+                    console.log('ItemOneCustom updateChar step 4');
+                    SetErrorState(false);
+                    console.log('ItemOneCustom updateChar step 5');
+                    SetChar(data);
+
+                    useEffectStart = false;
+
+                    console.log('ItemOneCustom updateChar : ',charId,' ',data);
+                
+                }
                }
             )
             .catch (
@@ -71,11 +82,18 @@ export default function ItemOneCustomHook (props) {
 
         useEffect(() => {
             console.log('ItemOneCustomHook useEffect ', props.charID);
+
+            useEffectStart = true;
+
             if (props.charID ) {
                                 // SetCallUpdate(true);
                 updateChar();
             }
-        },[props.charID]);
+
+            return () => {useEffectStart = false;};
+        }
+        ,[props.charID]);
+        
 
         
     
