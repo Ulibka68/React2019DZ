@@ -1,5 +1,5 @@
 import React from "react";
-import CustomPage from "../listWithDetails/customPage";
+import CustomPage from "../listWithDetailsHooks/customPageHook";
 import dataIceAndFire from "../../services/getdata";
 import ItemListCustomForRoute from "../listWithDetails/itemListCustom_for_Route";
 
