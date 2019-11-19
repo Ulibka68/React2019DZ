@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState,useEffect} from 'react';
 import style from  './itemListCustomHook.module.css';
 
 import Spinner from "../spinner/spinner";
@@ -9,38 +9,34 @@ import Spinner from "../spinner/spinner";
 // 3. fieldList ="aa bb" список полей для вывода через пробел
 // 4. primaryKeyField = название поля с ID
 
-export default class ItemListCustomHook extends Component {
-    
-    constructor (props) {
-        super(props);
+// export default class ItemListCustomHook extends Component {
+export default function ItemListCustomHook   (props) {
 
         // на первом рендере список полей будет пустым
-        this.fldsArray =[];
-        const fld = this.props.fieldList || 'name';
-        this.fldsArray =fld.split(' ');
-    }
+        let fldsArray =[];
+        const fld = props.fieldList || 'name';
+        fldsArray =fld.split(' ');
+        const {getDataFunc,pageNum = 15} = props;
+    
+    
+    const [charList,SetcharList] = useState(null);
 
-    state = {charList : null};
-
-    componentDidMount() {
-
-        const {getDataFunc,pageNum = 15} = this.props;
-
+    useEffect(()=>{
+        
         getDataFunc(pageNum)
             .then( data => {
-                // console.log('ItemListCustom componentDidMount',data);
-                this.setState(  { charList : data} );
+                
+                SetcharList(   data );
             });
-    }
 
-    
+        }
+        ,[pageNum]
+    );
 
-   
-    render() {
-        const {charList} = this.state;
-        if (! charList) return ( <Spinner /> );
 
-        const {primaryKeyField = 'ID'} = this.props;
+      if (! charList) return ( <Spinner /> );
+
+    const {primaryKeyField = 'ID'} = props;
        
        
         return (
@@ -49,13 +45,13 @@ export default class ItemListCustomHook extends Component {
                     <li 
                         className="list-group-item"
                         key={item[primaryKeyField]}
-                        onClick={()=>this.props.onCharSelected(item[primaryKeyField])}
+                        onClick={()=>props.onCharSelected(item[primaryKeyField])}
                     >
-                        {/* {item[primaryKeyField] + ' - '+item.name} */}
-                        {this.fldsArray.reduce((acc,curVal) => (acc+ item[curVal] + ', ' ),'')                        }
+                        
+                        {fldsArray.reduce((acc,curVal) => (acc+ item[curVal] + ', ' ),'')                        }
                     </li>
                 ))}
             </ul>
         );
-    }
+    
 }

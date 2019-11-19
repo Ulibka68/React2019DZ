@@ -29,7 +29,7 @@ export default function ItemOneCustomHook (props) {
 
         
         const [updateState,SetUpdateState] = useState(!! props.charID);
-        const [callUpdate,SetCallUpdate] = useState(false);
+        
         const [errorState,SetErrorState] = useState(false);
         const [char, SetChar] = useState(null);
 
@@ -73,11 +73,7 @@ export default function ItemOneCustomHook (props) {
     
         }
 
-        // if (callUpdate) {
-        //     SetCallUpdate(false);
-        //     updateChar();
-        // }
-        
+              
 
 
         useEffect(() => {
@@ -86,7 +82,7 @@ export default function ItemOneCustomHook (props) {
             useEffectStart = true;
 
             if (props.charID ) {
-                                // SetCallUpdate(true);
+                  
                 updateChar();
             }
 
@@ -121,7 +117,7 @@ export default function ItemOneCustomHook (props) {
             <div className={style.char_details + " rounded"}>
                 <h4>{char[nameField]}</h4>
                 <ul className="list-group list-group-flush">
-                    {this.fldsArray.map( fld => (
+                    {fldsArray.map( fld => (
                         char[fld.fldName] ?
                             <li key={fld.fldName} className="list-group-item d-flex justify-content-between">
                                 <span className="term">{fld.fldDesc}</span>
