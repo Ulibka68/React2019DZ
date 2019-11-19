@@ -1,0 +1,73 @@
+.maincont {
+    
+    background: linear-gradient(180deg, #0837B0 0%, #021E66 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_cnt_and_btn {
+    
+    width: 300px;
+}
+
+.white_box {
+    width: 300px;
+    height: 300px;
+    
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+.button_group {
+    display: flex;
+    width: 300px;
+    
+    margin-top: 34px;
+    justify-content: space-around;
+}
+
+#counter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 150px;
+    line-height: 150px;
+
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.btn_box1 {
+    width: 65px;
+    height: 65px;
+    border-radius: 4px;
+    background-repeat: no-repeat;
+    
+    
+}
+
+.btn_plus {
+    background-color: #089C20;
+    background-image: url('./img/Plus.png');
+    background-position: 9px 9px;
+}
+
+.btn_minus {
+    background-color: #E7AA10;;
+    background-image: url('./img/Minus.png');
+    background-position: 9px 26px;
+}
+
+.btn_rnd {
+    background-color: #CF1C1C;
+    background-image: url('./img/Reset.png');
+    background-position: 9px 10px;
+}
