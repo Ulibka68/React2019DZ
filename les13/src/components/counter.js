@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import * as actions from "../actions/actions";
+import {getDispatchsObj} from "../actions/actions";
 
  function Counter  ({counter,inc,dec,rnd,reset})  {
     return (
@@ -23,16 +23,23 @@ const mapStateToProps = (state) => {
   return { counter : state }
 }
 
+
+const mapDispatchToProps = (dispatch) => (getDispatchsObj());
+/*
 const mapDispatchToProps = (dispatch) => {
     return {
       inc: actions.incDispatch,
       dec : actions.decDispatch,
       reset : actions.resetDispatch,
-      rnd :  ()=> {
-          const val = Math.floor(Math.random()*100);
-          actions.rndDispatch(val);
-        }
+      rnd : actions.rndDispatch
+      // rnd :  ()=> {
+      //     const val = Math.floor(Math.random()*100);
+      //     actions.rndDispatch(val);
+      //   }
+
+
     }
 }
+*/
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
