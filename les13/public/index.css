@@ -32,7 +32,7 @@
     justify-content: space-around;
 }
 
-#counter {
+.counter_h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -70,4 +70,10 @@
     background-color: #CF1C1C;
     background-image: url('./img/Reset.png');
     background-position: 9px 10px;
+}
+
+.btn_text {
+    background-color: white;
+    border-radius: 4px;
+    font-weight: bold;
 }
