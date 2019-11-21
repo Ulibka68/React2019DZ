@@ -9,11 +9,12 @@ import RestoServiceContext from "./components/resto-service-context";
 import store from "./store";
 
 import firebase from "./firebase";
-import getDataTest from "./firebase/testFB";
+import {getDataTest,testImageUrl} from "./firebase/testFB";
 
 import './index.scss';
 console.log('авторизация firebase : ',firebase.login("t@t.ru","123456"));
 getDataTest();
+testImageUrl();
 
 
 const restoService = new RestoService();
