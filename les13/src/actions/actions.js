@@ -1,16 +1,16 @@
 import {store} from "../store/store";
 import {bindActionCreators} from 'redux';
 
+
+// то что снизу назовем action creators
+
 const inc = () => ({type : 'INC'});
 const dec = () => ({type : 'DEC'});
 const reset = () => ({type : 'RESET'});
-// const rnd = (value) => ({type : 'RND',value});
-const rnd = () => {
-    return {type : 'RND',value : Math.floor(Math.random()*100)};
-};
+const rnd = (value) => ({type : 'RND',value});
 
+export {inc, dec, reset, rnd}
 
-export  {inc, dec, rnd,reset };
 
 export const getDispatchsObj = () => (bindActionCreators(    {inc, dec, rnd,reset }    ,store.dispatch));
 
