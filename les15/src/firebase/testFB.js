@@ -24,7 +24,7 @@ function testImageUrl() {
 
     console.log(storageRef.fullPath);
     console.log(storageRef.name);
-    console.log(storageRef.bucket);
+    console.log(storageRef.bucket );
 
 
     storageRef.getDownloadURL()
