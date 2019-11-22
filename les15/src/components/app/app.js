@@ -6,6 +6,7 @@ import { Route,Switch} from "react-router-dom";
 
 import Background from './food-bg.jpg';
 
+import ImageFirebase from "../imageFirebase/imgFirebase";
 
 // поскольку app обернуто в conumer - то внутри меня ждет prop RestoService
 class App extends React.Component  {
@@ -16,6 +17,7 @@ class App extends React.Component  {
         return (
             <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
                 <AppHeader total={50}/>
+                <ImageFirebase imageName="cowboysteak.webp" />
                 <Switch>
                     <Route path="/" exact component={MainPage} />
                     <Route path="/cart" exact component={CartPage} />
