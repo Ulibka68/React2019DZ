@@ -41,3 +41,15 @@ npm install -g firebase-tools
 Развернутое приложение будет доступно по адресу gloreactredux.web.app.
 
 t@t.ru - 123456
+
+
+=============================================
+развертывание
+
+npm install -g firebase-tools
+
+firebase login
+firebase init   // только один раз
+firebase deploy --only hosting
+
+https://gloreactredux.firebaseapp.com/

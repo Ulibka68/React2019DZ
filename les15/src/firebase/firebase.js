@@ -37,6 +37,19 @@ class Firebase {
   async resetPassword(email) {
     await this.auth.sendPasswordResetEmail(email);
   }
+
+  async getImageUrl(ImageName) {
+
+    try {
+      return  await firebase.storage.ref(ImageName).getDownloadURL()
+    } catch (err) {
+        // A full list of error codes is available at
+        // https://firebase.google.com/docs/storage/web/handle-errors
+        console.error(err.message)
+    };
+}    
+
+
 }
 
 const firebase = new Firebase();

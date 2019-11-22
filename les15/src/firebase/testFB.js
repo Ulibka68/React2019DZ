@@ -16,8 +16,13 @@ function getDataTest() {
     };
 
 
+function testImageUrl() {    
+    firebase.getImageUrl("salat-cezar.jpg")
+    .then ( (url) => {console.log(url)});
+}
 
-function testImageUrl() {
+/*
+function testImageUrl2() {
     
     console.log("********************************");
     let storageRef = firebase.storage.ref("decalogo_avpn_1.jpg");
@@ -41,5 +46,6 @@ function testImageUrl() {
           
       });
 }    
+*/
 
 export {getDataTest,testImageUrl};
