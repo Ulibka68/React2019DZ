@@ -21,11 +21,11 @@ document.getElementById('inc').addEventListener('click',() => {
 // трансформация 1
 // Обработчики событий ничего не знают про Redux
 // слой view не связан с логикой
-document.getElementById('inc').addEventListener('click',incDispatch);
-document.getElementById('inc').addEventListener('click',() => {
-    const val =56;
-    rndDispatch(val);
-});
+// document.getElementById('inc').addEventListener('click',incDispatch);
+// document.getElementById('inc').addEventListener('click',() => {
+//     const val =56;
+//     rndDispatch(val);
+// });
 
 
 // Вариант2
@@ -43,5 +43,18 @@ export const rndDispatch = bindActionCreator(inc,store.dispacth);
 // Варинат 3 
 // функция  bindActionCreator уже есть в Redux
 // bindActionCreators - уже из redax
+/*
 export const incDispatch = bindActionCreators(inc,store.dispacth);
 export const rndDispatch = bindActionCreators(inc,store.dispacth);
+*/
+
+// Варинат 4
+// Итоговый варинат
+// В bind передать сразу набор функций
+
+
+const incDispatch = bindActionCreators(
+    {incDisp : inc, decDisp : dec, rndDisp : rnd},
+    store.dispacth);
+
+// вернет  объект с ключами {incDisp , decDisp , rndDisp }    
