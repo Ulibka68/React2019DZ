@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {getDispatchsObj} from "../actions/actions";
+import * as actions from "../actions/actions";
+import {bindActionCreators} from "redux";
 
  function Counter  ({counter,inc,dec,rnd,reset})  {
     return (
@@ -24,22 +25,11 @@ const mapStateToProps = (state) => {
 }
 
 
-const mapDispatchToProps = (dispatch) => (getDispatchsObj());
-/*
-const mapDispatchToProps = (dispatch) => {
-    return {
-      inc: actions.incDispatch,
-      dec : actions.decDispatch,
-      reset : actions.resetDispatch,
-      rnd : actions.rndDispatch
-      // rnd :  ()=> {
-      //     const val = Math.floor(Math.random()*100);
-      //     actions.rndDispatch(val);
-      //   }
+const mapDispatchToProps = (dispatch) => { return bindActionCreators(actions, dispatch)};
 
 
-    }
-}
-*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+// export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+// упрощенный вариант - вместо map можно передать объект
+export default connect(mapStateToProps, actions)(Counter);

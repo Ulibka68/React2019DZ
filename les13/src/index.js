@@ -5,7 +5,7 @@ import App from "./components/app"
 
 import {store} from "./store/store";
 
-import * as test1 from "./actions/test1"
+// import * as test1 from "./actions/test1"
 
 
 ReactDOM.render(

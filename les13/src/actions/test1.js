@@ -1,5 +1,5 @@
 // import reducer from "../store/reducer";
-import {inc, dec, reset, rnd} from "./actions"
+import * as actions from "./actions"
 import { store } from "../store/store";
 import {bindActionCreators} from "redux";
 
@@ -58,3 +58,13 @@ const incDispatch = bindActionCreators(
     store.dispacth);
 
 // вернет  объект с ключами {incDisp , decDisp , rndDisp }    
+
+
+// Варинат 5 
+// из actions испортируем *
+// в actions - объект с ключами inc, dec, rnd
+const dispFunc = bindActionCreators(
+    actions,
+    store.dispacth);
+
+    document.getElementById('inc').addEventListener('click',dispFunc.inc);    
