@@ -13,7 +13,7 @@ class MenuListItem extends React.Component {
     return (
             <li className="menu__item">
                 <div className="menu__title">{title}</div>
-                {/* <ImageFirebase className="menu__img" imageName={url} imageTitle={title}></ImageFirebase> */}
+                <ImageFirebase className="menu__img" imageName={url} imageTitle={title}></ImageFirebase>
                 <div className="menu__category">Category: <span>{category}</span></div>
                 <div className="menu__price">Price: <span>{price}</span></div>
                 <button className="menu__btn">Add to cart</button>

@@ -15,8 +15,11 @@ export default class ImageFirebase extends React.Component {
     }
 
     render() {
+        // если rest не развренуть - то класс не передастся
+        const {imageTitle,imageName, ...rest} = this.props;
+        
         return(
-            <img src={this.state.url} alt={this.props.imageTitle} {...this.props} ></img>
+            <img src={this.state.url} alt={imageTitle} {...rest} ></img>
         );
     }
 

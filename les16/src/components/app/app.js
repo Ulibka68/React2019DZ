@@ -5,8 +5,6 @@ import { Route,Switch} from "react-router-dom";
 
 import Background from './food-bg.jpg';
 
-import ImageFirebase from "../imageFirebase/imgFirebase";
-
 // поскольку app обернуто в conumer - то внутри меня ждет prop RestoService
 class App extends React.Component  {
 
@@ -27,20 +25,3 @@ class App extends React.Component  {
 }
 
 export default App;
-
-
-
-/* 
-<Route path='/books/:id' render = {
-    ({match,location,history})=> {
-    return  <BookOne bookID={match.params.id} />
-    }
-} />
-*/
-
-// {/*  если ничего не найдено path можно опустить  */}
-// <Route  render = {
-//     ({match,location,history})=> {
-//     return  <Page404 match={match} location={location} history={history} />
-//     }
-// } /> */}

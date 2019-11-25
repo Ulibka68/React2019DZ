@@ -47,10 +47,26 @@ class Firebase {
         // https://firebase.google.com/docs/storage/web/handle-errors
         console.error(err.message)
     };
+  }
+
+
+
+  async getDataFB() {
+      
+      let querySnapshot = await firebase.db.collection("menu").get();
+      let resultData=[];
+      querySnapshot.forEach(
+          (doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              // console.log(doc.id, " => ", doc.data());
+              resultData.push( {...doc.data(),id : doc.id });
+              
+          }
+      );
+      return resultData;
+  }
 }    
 
-
-}
 
 const firebase = new Firebase();
 export default firebase;

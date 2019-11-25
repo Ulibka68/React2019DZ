@@ -10,7 +10,7 @@ const WithRestoService =
                         // {  Consumer принимает функцию в качестве дочернего компонента. 
                         //  Эта функция принимает текущее значение контекста и возвращает React-компонент }
                         (RestoService) => {
-                            return <Wrapped {...props} RestoService={RestoService} />
+                            return <Wrapped {...props} RestoServiceProp={RestoService} />
                         }
                     }
                 </RestoServiceContext.Consumer>

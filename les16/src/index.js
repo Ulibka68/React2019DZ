@@ -10,11 +10,10 @@ import store from "./store";
 import firebase from "./firebase";
 import './index.scss';
 
-import {getDataTest} from "./firebase/testFB";
-
 console.log('авторизация firebase : ',firebase.login("t@t.ru","123456"));
-getDataTest();
 
+// тестирование данных
+// firebase.getDataFB().then( (data) => {console.log(data)} );
 
 const restoService = new RestoService();
 
