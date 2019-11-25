@@ -16,6 +16,7 @@ console.log('авторизация firebase : ',firebase.login("t@t.ru","123456
 // firebase.getDataFB().then( (data) => {console.log(data)} );
 
 const restoService = new RestoService();
+restoService.getCategoryIcons();
 
 ReactDOM.render(
     // redux srore

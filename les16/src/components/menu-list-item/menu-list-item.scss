@@ -39,4 +39,18 @@
         font-size: 16px;
         cursor: pointer;
     }
+
+    &__FlexCont {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__categoryIcon {
+        width : 64px;
+        height: 64px;
+        
+        background:  no-repeat center #29a745;
+        background-image: url("https://live.staticflickr.com/3748/9184825203_010444b380_q.jpg");
+        background-size: cover;
+    }
 }

@@ -2,6 +2,12 @@ const menuLoaded = (newMenu) => ({
     type : 'MENU_LOADED',
     payload : newMenu
 });
+const menuRequested = () => ({
+    type : 'MENU_REQUESTED'
+});
+const menuError = () => ({
+    type : 'MENU_ERROR'
+});
 
 
-export {menuLoaded}
+export {menuLoaded,menuRequested,menuError}
