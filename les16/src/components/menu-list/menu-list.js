@@ -3,6 +3,7 @@ import MenuListItem from '../menu-list-item';
 import './menu-list.scss';
 import {connect} from "react-redux";
 import WithRestoService from "../hoc";
+import {menuLoaded} from "../../actions";
 
 class MenuList extends Component {
 
@@ -50,12 +51,15 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps =(dispatch) => {
-    return {
-        menuLoaded : (newMenu) => {
-            dispatch({type : 'MENU_LOADED', payload : newMenu});
-        }
-    };
-}
+// const mapDispatchToProps =(dispatch) => {
+//     return {
+//         menuLoaded : (newMenu) => {
+//             dispatch(menuLoaded(newMenu));
+//         }
+//     };
+// }
+
+// достаточно передать сам объект Actioncreators
+const mapDispatchToProps = {menuLoaded};
 
 export default WithRestoService (connect(mapStateToProps,mapDispatchToProps)(MenuList));
