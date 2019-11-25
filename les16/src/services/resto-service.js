@@ -3,6 +3,7 @@ import firebase from "../firebase/firebase";
 export default class RestoService {
 
     categoryUrl = {};
+    categoryUrl_isLoaded = false;
 
     // возвращает promice
     getMenuItems() {
@@ -17,6 +18,7 @@ export default class RestoService {
                 (doc) => {
                     const {catName, urlName} = doc.data();
                     this.categoryUrl[catName] = urlName;
+                    this.categoryUrl_isLoaded = true;
 
                     // firebase.getImageUrl(urlName).then (
                     //     (url) => {

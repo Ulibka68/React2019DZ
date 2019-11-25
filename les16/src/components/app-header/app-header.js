@@ -3,10 +3,17 @@ import cartIcon from './shopping-cart-solid.svg';
 import './app-header.scss';
 import {Link} from "react-router-dom";
 
-const AppHeader = ({total}) => {
+class AppHeader extends React.Component {
+    state = { showFilter : false };
+
+    render() {
+    const {total} = this.props;
     return (
         <header className="header">
-            
+            <Link to="/menu_filter" className="header__left material_icons" >
+                filter_list
+            </Link>
+
             <Link to="/" className="header__link" >
                 Menu
             </Link>
@@ -16,6 +23,7 @@ const AppHeader = ({total}) => {
             </Link>
         </header>
     )
+    };
 };
 
 export default AppHeader;
