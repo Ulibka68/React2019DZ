@@ -20,7 +20,8 @@ import {getDispatchsObj} from "../actions/actions";
 
 
 const mapStateToProps = (state) => {
-  return { counter : state }
+  console.log(state);
+  return { counter : state.counter }
 }
 
 

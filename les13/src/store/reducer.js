@@ -1,16 +1,21 @@
 
-const reducer = (state = 5,action) => {
+const initialState = {
+    counter : 5,
+    anything : "whats happend"
+};
+
+const reducer = (state = initialState,action) => {
 
     // console.log (action.type);
     switch ( action.type ) {
         case 'INC' :
-            return state+1;
+            return {counter : state.counter+1,anything : "INC" };
         case 'DEC' :
-            return state-1;
+            return {counter : state.counter-1,anything : "DEC" };
         case 'RND' :
-            return action.value;
+            return {counter : action.value,anything : "RND"};
         case 'RESET' :
-            return 0;
+            return  {counter : 0,anything : "RESET"};;
         default:
             return state;
     }
