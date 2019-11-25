@@ -7,14 +7,13 @@ import ErrorBoundry from "./components/error-boundry";
 import RestoService from "./services/resto-service";
 import RestoServiceContext from "./components/resto-service-context";
 import store from "./store";
-
 import firebase from "./firebase";
-import {getDataTest,testImageUrl} from "./firebase/testFB";
-
 import './index.scss';
+
+import {getDataTest} from "./firebase/testFB";
+
 console.log('авторизация firebase : ',firebase.login("t@t.ru","123456"));
 getDataTest();
-testImageUrl();
 
 
 const restoService = new RestoService();

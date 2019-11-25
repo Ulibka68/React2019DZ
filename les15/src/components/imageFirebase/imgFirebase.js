@@ -1,6 +1,9 @@
 import React from "react";
 import firebase from "../../firebase/firebase";
 
+//  props
+//  imageName
+//  imageTitle
 export default class ImageFirebase extends React.Component {
     // на вход поступает props imageName
     state = {url : ''};
@@ -13,7 +16,7 @@ export default class ImageFirebase extends React.Component {
 
     render() {
         return(
-            <img src={this.state.url} alt={this.props.imageName}></img>
+            <img src={this.state.url} alt={this.props.imageTitle} {...this.props} ></img>
         );
     }
 
