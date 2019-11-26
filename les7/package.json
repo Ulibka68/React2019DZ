@@ -29,6 +29,9 @@
   ],
   "devDependencies": {
     "browserslist": "^4.7.2",
-    "caniuse-lite": "^1.0.30001008"
+    "caniuse-lite": "^1.0.30001008",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "react-test-renderer": "^16.12.0"
   }
 }
