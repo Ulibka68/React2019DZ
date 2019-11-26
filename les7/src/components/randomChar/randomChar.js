@@ -19,6 +19,13 @@ export default class RandomChar extends Component {
         this.setState({error : true, loading : false, errMsg : err.message});
     }
 
+    onCharLoaded = (char) => {
+        this.setState({
+            char,
+            loading : false
+        });
+    }
+
 
     componentDidMount() {
         // на всякий случай
