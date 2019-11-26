@@ -3,14 +3,21 @@ import cartIcon from './shopping-cart-solid.svg';
 import './app-header.scss';
 import {Link} from "react-router-dom";
 
+
 class AppHeader extends React.Component {
-    state = { showFilter : false };
+    
+    state = {showFilter : false};
+
+    onClickFilter = () => {
+            // console.log('Click', this.state.showFilter);
+            this.setState( (prev) => { return { showFilter : ! prev.showFilter} } );
+    }
 
     render() {
     const {total} = this.props;
     return (
         <header className="header">
-            <Link to="/menu_filter" className="header__left material_icons" >
+            <Link to={ this.state.showFilter ? "/" : "/menu_filter"} className="header__left material_icons"  onClick={this.onClickFilter} >
                 filter_list
             </Link>
 

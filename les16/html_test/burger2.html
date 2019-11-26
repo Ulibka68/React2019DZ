@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+
+    <style>
+    /* Navigation Menu - Background */
+.navigation {
+  /* critical sizing and position styles */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  
+  /* non-critical appearance styles */
+  list-style: none;
+  background: #111;
+}
+
+/* Navigation Menu - List items */
+.nav-item {
+  /* non-critical appearance styles */
+  width: 200px;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #000;
+}
+
+.nav-item a {
+  /* non-critical appearance styles */
+  display: block;
+  padding: 1em;
+  background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: color 0.2s, background 0.5s;
+}
+
+.nav-item a:hover {
+  color: #c74438;
+  background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(75,20,20,0.65) 100%);
+}
+
+/* Site Wrapper - Everything that isn't navigation */
+.site-wrap {
+  /* Critical position and size styles */
+  min-height: 100%;
+  min-width: 100%;
+  /* Needs a background or else the nav will show through */
+  background-color: white;
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+  
+  /* non-critical apperance styles */
+  padding: 4em;
+  /* background-image: linear-gradient(135deg, rgb(254,255,255) 0%,rgb(221,241,249) 35%,rgb(160,216,239) 100%); */
+  /* background-size: 200%; */
+}
+
+/* Nav Trigger */
+.nav-trigger {
+  /* critical styles - hide the checkbox input */
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-trigger"] {
+  /* critical positioning styles */
+  position: fixed;
+  left: 15px; top: 15px;
+  z-index: 2;
+  
+  /* non-critical apperance styles */
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+  background-size: contain;
+}
+
+/* Make the Magic Happen */
+.nav-trigger + label, .site-wrap {
+  transition: left 0.2s;
+}
+
+.nav-trigger:checked + label {
+  left: 215px;
+}
+
+.nav-trigger:checked ~ .site-wrap {
+  left: 200px;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
+}
+
+body {
+	/* Without this, the body has excess horizontal scroll when the menu is open */
+  overflow-x: hidden;
+}
+
+/* Additional non-critical styles */
+
+h1, h3, p {
+  max-width: 600px;
+  margin: 0 auto 1em;
+}
+
+code {
+	padding: 2px;
+	background: #ddd;
+}
+
+/* Micro reset */
+*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;}
+html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-serif; }
+    </style>
+</head>
+<body>
+
+        <ul class="navigation">
+                <li class="nav-item"><a href="#">Home</a></li>
+                <li class="nav-item"><a href="#">Portfolio</a></li>
+                <li class="nav-item"><a href="#">About</a></li>
+                <li class="nav-item"><a href="#">Blog</a></li>
+                <li class="nav-item"><a href="#">Contact</a></li>
+         </ul>
+            
+            <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+            <label for="nav-trigger"></label>
+            
+            <div class="site-wrap">
+
+        Приятно увидеть такую надпись на дисплее своего фитнес-трекера после очередного забега. Особенно усердствует в этом плане Strava, которая любит отмечать достижения вида «Третье самое быстрое время на дистанции 1 км» и рисовать медальки соответствующего цвета.
+        Кроме того, беговые достижения — вещь объективно впечатляющая. Попробуйте сказать, что преодолели бегом десять км, полумарафон, марафон или даже ультру среднему обывателю, для которого расстояние от дома до автобусной остановки пешком кажется «большим»… и приготовьтесь «ловить лулзы». Ещё льстит ощущение того, что ты способен на вещи, которые не могут повторить 99% населения земли (пусть даже потому, что не пробовали). И это вполне серьёзные, прикладные вещи, а не нелепица в духе «книги рекордов Гиннесса», когда некую часть тела используют оригинальным образом.
+        И из комментариев к статье можно сделать вывод, что многим просто нравится «жить с ощущением силы».
+        
+        Другие плюсы
+        
+        Не могу не сказать словечко про возрастные кризисы. Психологи выделяют кризис среднего возраста первого типа — это когда «седина в бороду, бес в ребро». Мужчины начинают молодиться, покупают дорогие машины, мотоциклы, начинают волочиться за женщинами моложе себя в два раза, пропадают в барах, пускаются во все тяжкие… И кризис среднего возраста второго типа, когда мужчине хочется быть уверенным, что с возрастом он становится лучше, чем прежде. В европейских странах, например, существует термин MAMIL (Middle Aged Man In Lycra). Поищите значение для интереса. Мои занятия бегом как раз совпали с наступлением кризиса среднего возраста и помогли его благополучно преодолеть: это работает — подтверждаю!
+        
+        Ещё хочу сказать про варианты сопутствующих активностей при беге. Раньше я очень много читал и с высокомерным презрением относился к аудиокнигам. Со временем возможностей для чтения становилось всё меньше и меньше, пока это занятие не было полностью вытеснено просмотром лент соцсетей. Бег фактически вернул мне эту возможность. И да, аудиокниги — это здорово. Всё, конечно, сильно зависит от качества прочтения, но со временем у меня сложился топ авторов, произведения которых часто напоминают аудиоспектакли, с собственной уникальной атмосферой, и вполне тянут на соавторство.
+        
+        
+        От себя могу порекомендовать эту книгу о беге от самого известного бегущего писателя мира. Кстати, его серия «Воздушный кокон» в прочтении Игоря Князева и театра Абуки также исключительно хорошо заходит под бег. Особенно на длинных тренировках.
+        
+        Музыка при беге тоже хороша, но она часто сбивает мне шаг, дыхание, пульс, темп, поэтому во время тренировок я её слушаю изредка и под настроение.
+        
+        В комментариях к первой части статьи также были люди, которые во время бега слушают обучающие аудиокурсы и подкасты, что слишком скучно «просто сидя».
+        
+        Бег и удалённая работа
+        
+        Эту статью я начал с утверждения, что бег — лучший выбор для удалёнщика. Некоторые назвали его претенциозным. Попробую объяснить, почему я сделал акцент на слове удалёнщик:
+        
+        Находясь в домашнем офисе, вы не тратите время на дорогу до работы: найти время для тренировок проще в разы, что в совокупности с их высокой доступностью (вышел — побежал) значительно упрощает занятия.
+        При удалённой работе обычно гибкий график. Из-за этого есть большой соблазн засидеться, смешать работу и личную жизнь. Бег служит замечательным «водоразделом» между работой и личной жизнью. Если у вас есть цель и план тренировок, просто заводите будильник на нужное время и всегда прерывайтесь для выхода на пробежку (конечно, если не работаете над задачей из разряда «умри, но сделай»). Конец тренировки, в совокупности с моральной разрядкой во время бега, способствует переключению фокуса на семью и личную жизнь. Время тренировки можно подобрать таким образом, чтобы закончить ровно тогда, когда дети сделают уроки, а жена завершит свои дела. Или даже наоборот: дождаться, когда все всё закончат, и взять семью с собой на велопрогулку. Ведь темп среднего бегуна вполне по силам ребёнку на велосипеде. Мои домашние любят составлять мне компанию на велосипедах во время пробежек.
+        Мотивация и дисциплина. Думаю, вполне очевидно, что уровень мотивации и самоконтроля удалёнщика должен быть выше, чем у офисного работника. В плане мотивации в беге гораздо больше возможностей, чем в любом другом спорте (о постановке и достижении целей я подробно, с примерами, рассказал в первой части). То же самое с дисциплиной. Бег — уникальный инструмент для её выработки. План тренировок нужно будет соблюдать — иначе не получится достигнуть цели. Придётся выстроить и соблюдать режим дня — для восстановления после повышенных физических нагрузок необходим качественный полноценный сон. Когда удастся выстроить режим дня, станет понятно, что «совы и жаворонки» — всего лишь удобный миф для тех, кто не хочет ложиться вовремя…
+        
+        Однако всё познаётся в сравнении. В первой части статьи уже говорилось про регби, кикбоксинг, велоспорт и про сложности, которые возникали с ним после перехода на удалёнку. Я считаю эти проблемы достаточно типичными.
+        
+        Мифы о беге, которые реально мешают
+        
+        Теперь самое время пройтись по мифам и заблуждениям относительно бега:
+        
+        Бег — это тяжело. «Помню, в школе мы сдавали трёшку, это было таким адом! Не, я не осилю десятку». Забудьте про горький школьный опыт. По моему скромному мнению, уроки физкультуры в той форме, в которой они есть сейчас, могут привить скорее отвращение к физкультуре как к таковой. По факту, на уроках физкультуры нужно писать не меньше, чем занима
+    
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi corrupti alias soluta, eum magnam maiores perferendis et provident cum ea atque voluptatibus molestias illum nostrum aut earum! Quaerat at magni praesentium debitis tempora est itaque officiis alias atque facere eius eum fugiat porro repudiandae assumenda hic saepe, natus accusantium nostrum veniam nihil quod dicta. Tenetur repudiandae cupiditate voluptas doloribus nulla perferendis qui dolores, excepturi minima, dolor incidunt omnis possimus quidem libero nisi porro alias enim corporis aspernatur cum quibusdam ipsam dicta reiciendis? Ipsa aperiam ut fugit aut aliquid dolorem tempora et nulla libero quod, nisi, blanditiis soluta saepe consequuntur at, praesentium odio totam fuga ab corrupti non recusandae. Quisquam reiciendis ad, perferendis corporis sapiente mollitia maxime nesciunt fugiat dolorum incidunt a voluptatibus at deserunt labore officia porro aut adipisci ab deleniti quibusdam dicta repellendus atque. Maxime placeat cum labore, voluptas molestiae, impedit quam cupiditate repellat laboriosam nihil sunt. Architecto provident ipsum, quisquam sit alias dolorum dicta praesentium ipsa minima commodi itaque! Nihil totam consequuntur quae animi quo quos enim sapiente, earum voluptatum possimus eos. Itaque sint at quaerat iure dolor tenetur sed, ea vel maiores repellendus tempore optio! Voluptatem eos natus commodi dolore, aspernatur maxime pariatur expedita totam id, voluptate doloribus numquam quia voluptatibus sed accusantium quod hic. Corrupti, impedit, laudantium exercitationem soluta illum commodi nostrum tempore itaque quidem eligendi quae, voluptatibus quo! Ducimus praesentium officia provident quia, harum at ipsam cumque cum veritatis esse nostrum. Nam, deleniti. Fugiat, eveniet quam laborum cum obcaecati at delectus nisi aperiam! Assumenda reprehenderit iste, labore consequuntur neque numquam eos laborum rem quae quidem quaerat, natus, ut repellendus maxime fuga. Deserunt consequuntur velit, sequi nostrum id rerum itaque quasi nisi porro? Optio animi vero ad eveniet sit nulla excepturi libero provident commodi, deserunt nisi veritatis quasi, sapiente quo consectetur, expedita perspiciatis accusamus vitae culpa. Facere magnam dolorem recusandae natus numquam, suscipit accusamus sed quam, ipsam unde amet dolores, doloremque neque fuga quae ipsa porro iste? Voluptatem labore nam quam laboriosam fugit aperiam praesentium porro dolorem exercitationem eum recusandae error distinctio saepe veniam, earum eaque nisi quibusdam possimus. Qui distinctio libero voluptatum id in. Odit, reprehenderit fugit voluptates id quaerat architecto? Natus optio quas architecto sit, doloremque, molestias quaerat nam sint facere illum pariatur maxime perferendis. Ipsa est blanditiis molestias quisquam? Adipisci sapiente, ad soluta voluptates ab voluptate quae nisi sequi eius excepturi eum, id commodi reprehenderit tempora. Repellat reprehenderit distinctio similique nisi quae ipsa praesentium commodi, illo officia. Illum eveniet assumenda, dolor laborum quia perspiciatis fuga tenetur provident. Iusto pariatur itaque necessitatibus vel sint ab nostrum quibusdam aliquam autem expedita laborum maxime perspiciatis, praesentium inventore voluptates aspernatur libero atque eum corrupti, earum alias, natus molestias! Quam excepturi maxime eius consectetur asperiores ut pariatur hic corporis blanditiis harum laudantium rerum culpa laborum quos eum, omnis minima tempora modi ad dolorum? Perspiciatis ab, blanditiis qui molestias veritatis cum nam ex enim totam? Autem quia eveniet incidunt? Accusantium eaque harum nesciunt eveniet provident amet magnam veritatis odio natus architecto! Nemo dolor, totam voluptatem enim hic quidem quia?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis iste repellendus quos eius quia. Dicta tenetur cupiditate asperiores quaerat assumenda quo facere. Non beatae facilis sunt quasi et veritatis cum sequi? Quo tenetur amet accusantium perferendis, eum assumenda, deleniti numquam eius laudantium soluta quas molestias id dignissimos unde odio corporis facilis optio nobis corrupti eligendi saepe molestiae modi, eos veritatis! Quos officiis optio accusamus et adipisci porro eum dicta tenetur qui? Maiores veniam exercitationem mollitia velit distinctio amet corporis ipsa fugit, eius, quam assumenda aliquid placeat cumque quaerat! Perferendis in at rerum adipisci eaque soluta omnis mollitia nostrum, architecto sequi harum quibusdam voluptas non esse quos autem assumenda molestias praesentium provident quod tempore ex dolore? Non praesentium aperiam animi reiciendis expedita veritatis exercitationem cupiditate a eius autem perspiciatis id provident hic dolorem consequatur repellendus tempore aut accusantium error laborum, suscipit amet, omnis ex. Odio reiciendis alias nemo cumque, repellat recusandae possimus modi cum atque, tempore deleniti similique consequatur dolor quod exercitationem ullam rerum? Maxime sunt amet quisquam suscipit vel non asperiores, qui ab? Nostrum, enim error. Eaque pariatur et necessitatibus atque beatae laborum quas blanditiis, delectus ut sit optio odit, voluptates unde explicabo distinctio ea. Voluptatibus delectus consequuntur officiis nulla? Ipsum ex architecto ut temporibus provident eos aut! Voluptas non obcaecati quia quis fugit. Corporis qui sint quam, suscipit voluptatum mollitia itaque. Alias eaque officiis illum. A, vitae natus in sunt doloremque, unde porro odit similique possimus quaerat repudiandae facilis odio quia aperiam! Quae iure nobis assumenda nesciunt fugiat culpa inventore tenetur obcaecati minus. Totam enim culpa amet natus voluptate sit, ad doloribus, ullam alias, eveniet optio. Commodi officia hic, ipsa veritatis sint nam mollitia cum fugit ratione minima amet vero unde consequuntur temporibus molestiae excepturi tempora sunt dolor reprehenderit. Voluptatem facilis quo possimus velit soluta labore mollitia tempore ullam qui eos, vero cupiditate, quasi quam. Animi eaque minus maxime libero expedita obcaecati nihil molestiae excepturi doloribus ipsum illum, officia iusto adipisci, iure accusantium quia ipsa. Vel, quae aperiam nam nesciunt aliquam autem quibusdam asperiores nihil doloremque porro magni minima, eveniet mollitia veritatis odit, similique error deleniti rem saepe iste cum blanditiis nobis? Veritatis, quam unde rerum labore aliquam nobis expedita numquam repellendus delectus sapiente, quos, commodi animi inventore quo aliquid cumque maiores totam asperiores nesciunt ipsam adipisci. Vel, praesentium. Cumque fuga voluptas cum a doloribus quisquam deleniti et eveniet non sed blanditiis minus sunt, eius reprehenderit delectus. Autem, eos tempore! Cum qui exercitationem dolores libero autem repellat quam reprehenderit nihil perferendis, sequi iure maiores distinctio, tempora nulla vero iste harum aperiam officiis omnis veritatis magnam minima ullam quo. Aut harum aliquam autem odio quod ut sunt excepturi ex, obcaecati qui voluptatibus esse blanditiis. Inventore ab cupiditate asperiores nemo! In quasi, exercitationem quo velit aliquam cupiditate illum quibusdam itaque quisquam explicabo facere reprehenderit molestias placeat inventore tempore rerum corrupti totam dicta pariatur corporis, similique voluptate eum necessitatibus! Nam ratione labore non adipisci. Consequuntur animi ullam aliquam. Illo, deleniti ducimus laboriosam iste ad expedita consectetur aliquam ipsum pariatur blanditiis ab! Molestiae ipsum optio eveniet suscipit, ab provident sit cum debitis id quia quos sequi veniam earum, nostrum numquam perferendis tempore facilis itaque odio? Officiis, numquam pariatur blanditiis possimus quam in, repudiandae voluptatem amet temporibus hic, alias eveniet quia obcaecati quod ad maxime esse cumque? Recusandae autem veritatis dolorum dolorem soluta, dolor optio nam, perferendis exercitationem, quas natus voluptates possimus quibusdam nesciunt a? Aliquid tempore dignissimos, exercitationem, sapiente explicabo ex non veritatis excepturi qui officiis numquam repellat accusamus, obcaecati eligendi alias. Eius, architecto quos qui debitis officiis magnam quis perferendis est minus facere tenetur quas neque! Architecto rem sed quia molestias placeat reiciendis! Assumenda aliquam fugiat officiis at, molestiae magnam iure voluptas. Cupiditate, excepturi provident minima reiciendis quia voluptatibus quasi assumenda odit sunt fugiat velit incidunt sequi ad facere quo quisquam accusantium esse, eum animi, minus vel? Sapiente molestias iste nisi quia deleniti excepturi iure officia totam dignissimos sequi? Voluptate, odio soluta quas quis minima ea ut nam at accusantium commodi necessitatibus perspiciatis, similique adipisci aliquam. Facilis, iste corrupti cupiditate dicta facere tempora expedita! Repudiandae reprehenderit, incidunt minima laborum aspernatur deleniti earum voluptas voluptatem quos sed pariatur fugit. Nisi ullam voluptate vel, quasi esse tenetur saepe vero eius rem deleniti tempora aliquid ratione velit ad ea facilis error fugit quam, itaque doloremque obcaecati! Ipsum tenetur quibusdam nulla! Reiciendis corporis vero debitis, id ea commodi ut quibusdam soluta iste autem. Excepturi deserunt sint sapiente possimus ipsam a distinctio dolore, at accusamus perferendis consequuntur eius, sunt natus! Quas hic enim nemo delectus, sit tempore, ut expedita praesentium sequi earum ex recusandae, non architecto? Iure magnam, ex dolores minus laudantium, suscipit molestias voluptatibus distinctio sit itaque nam nobis ullam? Ratione hic ad rem odio earum at iure aut culpa atque ullam voluptatem, sint, eaque autem minima nam eum praesentium, dolores rerum dolorum explicabo odit quidem temporibus necessitatibus. Recusandae libero non magni ea minima suscipit praesentium expedita earum repudiandae accusamus. Quos, illum est. Reprehenderit, rem rerum ipsum est incidunt libero, vel alias velit ut ab ducimus, cupiditate tempora fugit esse reiciendis ipsam. Ratione ullam adipisci alias nobis asperiores facilis nemo modi distinctio omnis blanditiis ab possimus harum natus tempora laudantium sequi explicabo, exercitationem aperiam iusto provident ea nostrum at repudiandae. Sed modi minima necessitatibus nobis laudantium possimus saepe beatae sapiente enim odio, quas architecto eveniet obcaecati laboriosam omnis aperiam pariatur rem similique quisquam. Illum vel vitae, assumenda ipsam necessitatibus unde officiis tempore odio aliquam ullam maxime ea qui voluptatibus suscipit fuga quisquam deserunt sit praesentium enim repellendus quo! Inventore porro aperiam minus velit ipsa ullam voluptas reprehenderit amet sit doloremque aut iste tempore ducimus animi, pariatur, doloribus ipsam quia rem. Repudiandae pariatur hic adipisci! Sunt fuga exercitationem autem voluptatum saepe accusantium reprehenderit adipisci eius deleniti rerum quos, laborum quia similique consequuntur. Libero expedita laudantium qui nobis quod vitae impedit enim vero explicabo quasi? Quas excepturi, est modi adipisci, voluptas odit et pariatur architecto nulla porro nobis earum provident voluptatibus enim laborum dolores accusamus sint molestiae quae quo alias! Vel esse ab aliquid perspiciatis accusantium ipsum! Vel itaque quasi vero consequatur voluptate neque adipisci suscipit maxime ut sapiente quo possimus dolorum, quibusdam distinctio voluptates quaerat expedita minima rem alias saepe. Qui sint aspernatur odit deserunt, corrupti eum labore architecto doloremque, explicabo saepe quibusdam quo, recusandae quas minus amet totam reiciendis voluptatum cupiditate illum libero tempore exercitationem cum. Nostrum soluta nobis ducimus nam cum deleniti blanditiis maxime! Obcaecati accusamus libero natus id sit! Adipisci atque eum incidunt quaerat asperiores nesciunt earum illum. Porro, animi? Mollitia dolor nesciunt, fuga quasi doloremque laudantium non necessitatibus neque ullam quidem. Magni, iure eligendi perferendis facere, ut beatae rem nobis neque eveniet nulla esse vitae quidem accusantium, eos tenetur vero doloremque possimus. Molestias modi accusamus a numquam laborum. Accusantium nemo veniam hic. Eaque tempore voluptatibus temporibus amet doloremque laboriosam ducimus inventore nesciunt vero hic iure corrupti, quia possimus, qui beatae excepturi aperiam quos. Aliquid odio odit rerum necessitatibus voluptate, exercitationem fugit distinctio assumenda eaque nobis officiis amet quo voluptatibus, porro dolore et delectus cumque pariatur dolorem quibusdam. Distinctio doloremque cum explicabo voluptatum eos, ducimus nemo! Sunt numquam nobis quisquam eius soluta maxime repudiandae ex officiis voluptas nesciunt, omnis ut pariatur minima sed accusamus iure. Suscipit quos at ut dolor voluptas in sint, temporibus dolore facilis dignissimos? Delectus ipsum ducimus facere commodi non. Aut id, quis rem animi accusamus minus eius ex nihil consequuntur voluptates eos! Quibusdam possimus dolores, neque ab quisquam enim deleniti incidunt nisi dolorum omnis id odio quidem. Adipisci recusandae assumenda accusamus veritatis magnam eveniet voluptates officiis repellat, laborum neque error sequi, voluptatum id explicabo maiores blanditiis aliquam quidem soluta quaerat. Ipsa soluta, iusto pariatur, fuga alias illo magni error nisi quam quis totam magnam laborum sed ratione est itaque delectus quisquam necessitatibus et, nobis voluptatem. Et harum aut numquam aliquid dignissimos architecto accusamus ducimus molestiae mollitia molestias, quis officiis odit vitae, obcaecati est? Deleniti sapiente suscipit ducimus, vero assumenda voluptatibus perferendis saepe debitis rerum illo iste, asperiores voluptates accusamus maxime id ipsa temporibus recusandae ut in repellendus, fuga veniam ullam voluptatem magnam. Quod natus quae quia, possimus nesciunt sapiente in voluptatem rem? Quia consequuntur reiciendis numquam facilis, dignissimos sunt tempora, saepe accusamus, harum a officia cumque quis natus molestiae culpa corrupti dolor. Culpa aliquid voluptas impedit saepe expedita mollitia obcaecati qui illo deserunt rerum? Tempore repudiandae in a accusantium porro, nisi accusamus sunt optio perferendis debitis rerum distinctio voluptates quisquam quo cumque? Error explicabo deleniti nesciunt esse quae dolorum fugiat, minus dolores cum iste aliquam corrupti cupiditate magni aut maiores inventore voluptate, eaque nobis veritatis. Iste fugit, minima beatae eligendi ad fugiat, cumque facere voluptate voluptatum maiores nesciunt illo laboriosam officiis placeat velit aut dolorum adipisci dolores sapiente quidem? Natus sed nobis maiores, optio assumenda officia inventore, quidem itaque, deserunt minus nulla voluptas consequatur vitae iusto omnis ipsum dolorum consectetur fugiat facilis. Optio voluptatem debitis, corporis repellendus vitae maiores tempore perspiciatis expedita consequuntur cumque eligendi molestiae dolorem consectetur vel! Molestias nisi mollitia non optio perferendis amet minus hic odio in fuga modi iure quisquam sapiente qui dolor, itaque perspiciatis autem incidunt, labore doloribus. Molestias ducimus enim et deleniti eligendi facere odit suscipit? Reprehenderit sapiente modi reiciendis distinctio sunt consectetur impedit fugit quidem alias neque ratione ab perferendis blanditiis adipisci itaque officiis, beatae nisi deserunt? Deserunt modi illo repudiandae numquam eius laudantium nemo impedit sequi enim nisi tempore rerum, consequatur praesentium commodi accusamus expedita iste id corrupti omnis aliquid delectus non accusantium, sed dolor. Modi ea nisi dolor sint, iusto voluptate iure harum incidunt molestiae officia cumque excepturi. Beatae eos debitis maxime. Rem ea nisi voluptatibus et, amet perferendis architecto perspiciatis atque in exercitationem soluta maiores repudiandae porro unde ab. Nostrum laboriosam provident eum iure accusantium aspernatur obcaecati ducimus, doloremque dolores omnis corrupti recusandae aperiam natus assumenda, nobis sequi consequatur exercitationem vel dignissimos neque, amet odio. Maiores et eum esse laborum error soluta aliquam possimus aliquid qui eius? Nobis aperiam impedit non similique perferendis aliquid alias possimus et aut perspiciatis iure amet quia, accusamus iusto, minus odio obcaecati. Sunt, ducimus consequuntur corrupti quibusdam voluptate quae ullam dignissimos non delectus veniam eveniet expedita omnis! Sapiente facilis labore mollitia, porro deleniti quod. Enim, dolores possimus, magnam ad facere ipsam nulla deleniti illo quasi maiores repudiandae ullam excepturi alias praesentium eaque! Qui magnam optio atque voluptatibus assumenda, sunt cupiditate fugiat culpa quod, ullam, quia beatae rem modi itaque aut. Veritatis aliquam alias quisquam vel dolores, ullam veniam recusandae voluptatum repellat dolorum inventore, eos fugiat natus incidunt amet. Repellendus saepe voluptatem facere esse fugit mollitia cum blanditiis veniam assumenda harum. Reiciendis, libero minus. Fugiat recusandae expedita nisi molestiae odio deleniti doloremque facere corporis est fugit corrupti architecto distinctio dolore accusamus, dicta ratione voluptatem temporibus cupiditate in incidunt culpa nihil, tempore perferendis eius! Nostrum aliquid neque labore vero molestias sapiente sunt, iste repellat quisquam. Iusto dolorem eaque sed vitae voluptatem neque ut, magnam cupiditate officiis minima, voluptates, facere eos veritatis consequuntur! Ratione labore sapiente unde soluta facilis excepturi quia dolorum nesciunt explicabo accusamus. Perferendis qui quasi dolor aliquid sapiente molestias non, cupiditate quia itaque cumque mollitia minus assumenda doloribus quam reiciendis, blanditiis explicabo ut voluptatem voluptate autem? Fugiat tenetur, dicta quae sequi repellat quibusdam mollitia repudiandae reiciendis perferendis, facere amet! Quos maiores sint similique ipsam excepturi tempore enim doloribus omnis et sapiente dignissimos nulla recusandae cumque eaque ullam, quasi ad voluptas assumenda. Vel minus voluptatem ab debitis, aspernatur enim perspiciatis reiciendis deleniti sint alias voluptatum aperiam fugiat labore minima a molestias possimus accusantium voluptas, incidunt obcaecati non! Itaque rerum facilis, accusamus a, culpa at temporibus sunt recusandae tempore vitae reiciendis dignissimos asperiores. Molestias nemo reiciendis nulla doloremque libero velit aliquid accusamus, architecto dignissimos ad deleniti ipsum esse. Voluptatum expedita unde quidem maiores numquam ab et perspiciatis laboriosam ut repellat. Placeat, doloribus. Fugit tenetur officia a pariatur velit recusandae minus praesentium quasi ea. Nisi omnis, rem qui, quasi enim quae asperiores ex rerum pariatur iusto aspernatur illo voluptates deserunt. Explicabo molestiae consectetur modi repellendus nobis, veritatis exercitationem cum deserunt magni et pariatur unde tenetur ex eius delectus corrupti itaque placeat sint ducimus minima facere sequi dicta. Asperiores!
+            </div>
+</body>
+</html>

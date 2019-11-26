@@ -9,5 +9,13 @@ const menuError = () => ({
     type : 'MENU_ERROR'
 });
 
+const filterSet = (key) => ({
+    type : 'FILTER_SET',
+    filterKey : key
+});
+const filterReset = () => ({
+    type : 'FILTER_RESET'
+});
 
-export {menuLoaded,menuRequested,menuError}
+
+export {menuLoaded,menuRequested,menuError,filterSet,filterReset}

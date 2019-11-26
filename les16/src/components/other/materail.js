@@ -1,15 +1,26 @@
 import style from "./material.module.scss";
 import React from "react";
 import WithRestoService from "../hoc";
+import { withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {filterSet,filterReset} from "../../actions";
 
-const MaterialIcons = (props) =>  {
-    const {RestoServiceProp} = props;
+class MaterialIcons extends React.Component {
+ 
+    onClick (id) {
+        console.log('onClick',id);
+        this.props.filterSet(id);
+        this.props.history.push('/');
+    }
+
+    render() {
+    const {RestoServiceProp} = this.props;
 
     let body=[];
     if (RestoServiceProp.categoryUrl_isLoaded ) {
         for (let [key, value] of Object.entries( RestoServiceProp.categoryUrl )) {
             body.push(
-                <li key={key}>
+                <li key={key} className = {style.listItem}  onClick = { (evnt) => this.onClick(key, evnt) } >
                      <img 
                         className={style.icon}
                         alt={key}
@@ -31,8 +42,22 @@ const MaterialIcons = (props) =>  {
         </ul>
     </div>
     );
+    }
+
 }
 
-export default WithRestoService(MaterialIcons);
+
+const mapStateToProps = (state) => {
+    
+    return {
+        filteredMenu : state.filteredMenu,
+        filteredMenuKey : state.filteredMenuKey
+    }
+}
+
+const mapDispatchToProps = {filterSet,filterReset} ;
+
+
+export default withRouter(WithRestoService(   connect(mapStateToProps,mapDispatchToProps)(MaterialIcons)));
 
 // https://material.io/resources/icons/?style=baseline
