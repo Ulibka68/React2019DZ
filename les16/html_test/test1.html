@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body>
+
+        <div class="modal" >Вася23</div>
+        <button class="main__send-button-btn">Open</button>
+
+        <script>
+            const btnModal = document.querySelector('.main__send-button-btn'),
+          modal = document.querySelector('.modal'),
+          modalClose = document.querySelector('.modal__close');
+
+    const openModal = () => {
+      modal.style.left = '50%';
+      document.body.style.overflowY = 'hidden' ;
+      console.log("=========");
+      console.log(modal.style.left);
+      
+    };
+
+    const closeModal = () => {
+      modal.style.left = '-150%'
+      document.body.style.overflowY = '';
+      console.log(modal.style.left);
+    };
+
+    btnModal.addEventListener('click', openModal);
+    
+        </script>
+    
+</body>
+</html>

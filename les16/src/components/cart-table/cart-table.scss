@@ -19,11 +19,13 @@
         align-items: center;
         margin-top: 40px;
         border: 1px solid rgba(256,256,256, .2);
+        outline: 5px solid red;
         background-color: rgba(0,0,0,.7);
         box-shadow: 0 0 20px rgba(256,256,256, .1);
         &-title, &-price  {
             width: 250px;
             text-align: center;
+            
             color: #fff;
             font-size: 24px;
         }

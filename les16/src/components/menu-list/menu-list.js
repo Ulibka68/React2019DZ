@@ -3,7 +3,7 @@ import MenuListItem from '../menu-list-item';
 import './menu-list.scss';
 import {connect} from "react-redux";
 import WithRestoService from "../hoc";
-import {menuLoaded,menuRequested,menuError} from "../../actions";
+import {menuLoaded,menuRequested,menuError,addedToCart} from "../../actions";
 import Spinner from "../spinner";
 import Error from "../error";
 
@@ -38,7 +38,7 @@ class MenuList extends Component {
 
     render() {
         // данные в props
-    const {menuItems, loading,error} = this.props;
+    const {menuItems, loading,error,addedToCart} = this.props;
     if (error) return <Error />;
     if (loading) return <Spinner />;
 
@@ -46,7 +46,7 @@ class MenuList extends Component {
         <ul className="menu__list">
             {
               menuItems.map( menuItem => {
-                  return <MenuListItem menuItem={menuItem} key={menuItem.id} />
+                  return <MenuListItem menuItem={menuItem} key={menuItem.id}  onAddToCart={ () => addedToCart(menuItem.id)} />
               }) 
             }
 
@@ -73,6 +73,6 @@ const mapStateToProps = (state) => {
 // }
 
 // достаточно передать сам объект Actioncreators
-const mapDispatchToProps = {menuLoaded,menuRequested,menuError};
+const mapDispatchToProps = {menuLoaded,menuRequested,menuError,addedToCart};
 
 export default WithRestoService (connect(mapStateToProps,mapDispatchToProps)(MenuList));
