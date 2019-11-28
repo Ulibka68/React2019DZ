@@ -10,10 +10,28 @@ import store from "./store";
 import firebase from "./firebase";
 import './index.scss';
 
-console.log('авторизация firebase : ',firebase.login("t@t.ru","123456"));
+console.log('авторизация firebase : ')
+firebase.login("t2@t.ru","123456")
+    .then ( (user) => { 
+        console.log(user) ;
+        console.log('user.displayName : ', user.user.displayName);
+        console.log('user.uid : ', user.user.uid);
 
-// тестирование данных
-// firebase.getDataFB().then( (data) => {console.log(data)} );
+        // let userFB = firebase.auth.currentUser;
+        // console.log('firebase.auth.currentUser : ',userFB);
+
+        store.dispatch({
+            type: 'USER_SET',
+            user: user.user
+          })
+          
+
+    }  );
+
+    // let userFB = firebase.auth.currentUser;
+    // console.log('firebase.auth.currentUser : ',userFB);
+
+
 
 const restoService = new RestoService();
 restoService.getCategoryIcons();

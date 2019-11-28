@@ -24,4 +24,12 @@
         justify-self: start;
         flex-grow: 1;
     }
+
+    &__user {
+        font-size: 18px;
+        color: #fff;
+        text-decoration: none;
+        // justify-self: start;
+        // flex-grow: 1;
+    }
 }

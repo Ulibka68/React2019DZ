@@ -19,6 +19,26 @@ $color: white;
         width: 60%;
         margin: 0 auto;
     }
+
+    &__button {
+        font-size: 36px;
+        color: $color;
+        text-align: center;
+        font-weight: 300;
+        display: block;
+        margin: 0 auto;
+        padding: 5px 30px;
+        margin-top: 25px;
+
+        border: 1px solid rgba(256,256,256, .2);
+        background-color: rgba(0,0,0,.3);
+        box-shadow: 0 0 20px rgba(256,256,256, 1);
+    }
+
+    &__button:hover {
+        color : rgb(63, 63, 211);
+    }
+
     &__item {
         position: relative;
         display: flex;

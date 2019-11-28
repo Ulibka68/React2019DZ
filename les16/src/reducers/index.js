@@ -14,10 +14,28 @@ const initialState = {
     error : false,
     filteredMenu : false,  // показывать меню по фильтру
     filteredMenuKey : "",   // ключ по которому фильтровать
-    itemsInBasket : []             // динамически формируемые элементы в корзине
+    itemsInBasket : [] ,            // динамически формируемые элементы в корзине
+    totalSumm : {count : 0, total : 0},
+    user : null        // текущий пользователь Firebase
 };
 
 
+// возвращает {count : 0, total : 0}
+function totalSummInBasket(state) {
+    return (
+      state.itemsInBasket.reduce( (prevVal, curVal) => 
+      {
+        return (
+            {
+                count : prevVal.count+curVal.count,
+                total : prevVal.total + (curVal.count * curVal.price )
+            }
+        );
+      },
+      {count : 0, total : 0} 
+     )
+    );
+}
 
 
 const reducer = (state = initialState, action) => {
@@ -68,6 +86,7 @@ const reducer = (state = initialState, action) => {
             
                 return {
                     ...state,
+                    totalSumm : {count : state.totalSumm.count+1, total : state.totalSumm.total + newItem.price},
                     itemsInBasket : state.itemsInBasket.concat(newItem)
                 };
             } else {
@@ -76,6 +95,7 @@ const reducer = (state = initialState, action) => {
                 newItem.count += 1;
                 return {
                     ...state,
+                    totalSumm : {count : state.totalSumm.count+1, total : state.totalSumm.total + newItem.price},
                     itemsInBasket : [...state.itemsInBasket.slice(0,itemIndex), newItem ,...state.itemsInBasket.slice(itemIndex+1)]
                 };
             }
@@ -84,13 +104,22 @@ const reducer = (state = initialState, action) => {
         case 'ITEM_REMOVE_FROM_CART' : {
                 const id = action.payload;
                 const itemIndex = state.itemsInBasket.findIndex( item => item.id === id );
+                const item = state.itemsInBasket[itemIndex];
     
                 return {
                     ...state,
+                    totalSumm : {count : state.totalSumm.count-item.count, total : state.totalSumm.total - item.price * item.count },
                     itemsInBasket : [...state.itemsInBasket.slice(0,itemIndex), ...state.itemsInBasket.slice(itemIndex+1)]
                 };
         }
             
+        case 'USER_SET' : {
+            
+            return {
+                ...state,
+                user : action.user
+            }
+        }
 
             
             
@@ -101,3 +130,4 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer;
+export {totalSummInBasket};

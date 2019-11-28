@@ -2,12 +2,14 @@ import React from 'react';
 import './cart-table.scss';
 import {connect} from "react-redux";
 import {deleteFromCart} from "../../actions";
+import WithRestoService from "../hoc/with-resto-service";
 
 
-const CartTable = ({items, deleteFromCart}) => {
+const CartTable = ({items, deleteFromCart,totalSumm,RestoServiceProp}) => {
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
+            
             <div className="cart__list">
                 {
                     items.map( (item) => {
@@ -16,14 +18,14 @@ const CartTable = ({items, deleteFromCart}) => {
                            <div className="cart__item" key={id}>
                                 <img src={urlFull} className="cart__item-img" alt={title}></img>
                                 <div className="cart__item-title">
-                                    <div class="cart__item-title-text">
+                                    <div className ="cart__item-title-text">
                                         {title}
                                     </div>
                                 </div>
 
-                                <div class="cart__item-container">
+                                <div className ="cart__item-container">
                                     <button><span className="cart__item-btn-minus">-</span></button>
-                                        <span class="cart__item-count">{count}</span> 
+                                        <span className="cart__item-count">{count}</span> 
                                     <button><span className="cart__item-btn-plus">+</span></button>
                                 </div>
 
@@ -38,21 +40,29 @@ const CartTable = ({items, deleteFromCart}) => {
                         );
                     })
                 }
-
-
-               
             </div>
+
+            
+             { totalSumm.count && 
+                <button className="cart__button" onClick={ () => { RestoServiceProp.putOrderToFirebase(); } }>
+                    Купить
+                </button>
+            }
         </>
     );
 };
 
-const mapStateToProps = ({itemsInBasket}) => {
-    return {items : itemsInBasket};
+const mapStateToProps = ({itemsInBasket,totalSumm}) => {
+    return {
+            items : itemsInBasket,
+            totalSumm : totalSumm
+           };
 };
 
 
 const mapDispatchToProps = {deleteFromCart};
 
+// RestoServiceProp
 
-export default connect(mapStateToProps,mapDispatchToProps)(CartTable);
+export default connect(mapStateToProps,mapDispatchToProps)(  WithRestoService( CartTable ) );
 

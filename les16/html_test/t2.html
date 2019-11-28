@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+function TotalSumm(state) {
+    return (
+      state.itemsInBasket.reduce( (prevVal, curVal) => 
+      {
+        return (
+            {
+                count : prevVal.count+curVal.count,
+                total : prevVal.total + (curVal.count * curVal.price )
+            }
+        );
+      },
+      {count : 0, total : 0} 
+     )
+    );
+}
+
+
+let itms =[ {count : 1,price :15},
+           {count : 3,price :6}
+           ];
+
+let state = { itemsInBasket : itms};
+
+console.log('TotalSumm(state)');
+console.log(TotalSumm(state));
+           
+    </script>
+</body>
+</html>

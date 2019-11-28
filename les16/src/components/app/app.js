@@ -15,7 +15,7 @@ class App extends React.Component  {
         // console.log(RestoService.getMenuItems())
         return (
             <div style={{background: `url(${Background}) center center/cover no-repeat`}} className="app">
-                <AppHeader total={50}/>
+                <AppHeader />
                
                 {/* <ImageFirebase imageName="catIcons/salad.png" /> */}
                 <Switch>

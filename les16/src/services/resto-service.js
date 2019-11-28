@@ -1,4 +1,5 @@
 import firebase from "../firebase/firebase";
+import store from "../store";
 
 export default class RestoService {
 
@@ -32,5 +33,11 @@ export default class RestoService {
             // console.log(this.categoryUrl);
         }
 
+    putOrderToFirebase() {
+        const user = store.getState().user;
+        console.log(user.uid);
+
+
+    }
 
 }
