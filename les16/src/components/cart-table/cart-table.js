@@ -11,11 +11,22 @@ const CartTable = ({items, deleteFromCart}) => {
             <div className="cart__list">
                 {
                     items.map( (item) => {
-                        const {title,price,urlFull,id} = item;
+                        const {title,price,urlFull,id,count=1} = item;
                         return (
                            <div className="cart__item" key={id}>
                                 <img src={urlFull} className="cart__item-img" alt={title}></img>
-                                <div className="cart__item-title">{title}</div>
+                                <div className="cart__item-title">
+                                    <div class="cart__item-title-text">
+                                        {title}
+                                    </div>
+                                </div>
+
+                                <div class="cart__item-container">
+                                    <button><span className="cart__item-btn-minus">-</span></button>
+                                        <span class="cart__item-count">{count}</span> 
+                                    <button><span className="cart__item-btn-plus">+</span></button>
+                                </div>
+
                                 <div className="cart__item-price">{price}$</div>
                                 <div 
                                     className="cart__close"

@@ -1,10 +1,17 @@
+$height : 125px;
+$outline_inner : "1px solid grey";
+$outline_outer : "1px solid grey";
+$font-size : 24px;
+$ff : grey;
+$color: white;
+
 .cart {
     padding-top: 120px;
     padding-bottom: 50px;
     min-height: 100vh;
     &__title {
         font-size: 36px;
-        color: #fff;
+        color: $color;
         text-align: center;
         font-weight: 300;
     }
@@ -15,24 +22,75 @@
     &__item {
         position: relative;
         display: flex;
+
         justify-content: space-between;
-        align-items: center;
+        justify-items: center;
+        align-items: stretch;
+
         margin-top: 40px;
         border: 1px solid rgba(256,256,256, .2);
-        outline: 5px solid red;
+        outline: #{$outline_outer};
         background-color: rgba(0,0,0,.7);
         box-shadow: 0 0 20px rgba(256,256,256, .1);
+       
+
         &-title, &-price  {
-            width: 250px;
             text-align: center;
-            
-            color: #fff;
-            font-size: 24px;
+            justify-items: stretch;
+            color:$color;
+            font-size: $font-size;
+
+            outline: #{$outline_inner};
         }
+
+        &-count {
+            color: $color;
+            font-size: $font-size;
+            padding: 0 10px;
+        }
+
+        &-btn-minus {
+            font-size: 24px;
+            line-height: 20px;
+        }
+        &-btn-plus {
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        &-title {
+            flex-grow: 1;
+            display: flex;
+            height: $height;
+          }
+
+        &-container {
+            display: flex;
+            height: $height;
+            align-content: center;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        &-title-text {
+            text-align: center;
+            align-self: center;
+            overflow: hidden;
+            padding: 10px;
+          }
+       
+
+        &-price {
+            flex-basis: 120px;
+            margin-left: 5px;
+            line-height: $height;
+        }
+
         &-img {
-            height: 125px;
+            height: $height;
             width: 250px;
             object-fit: cover;
+            justify-self: start;
         }
     }
     &__close {
