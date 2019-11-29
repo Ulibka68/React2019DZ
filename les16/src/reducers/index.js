@@ -1,12 +1,3 @@
-// const initialState = { menu : [
-//     {
-//         "title": "Cesar salad",
-//         "price": 12,
-//         "url": "salat-cezar.jpg",
-//         "category": "salads",
-//         "id": 1
-//     }
-// ]};
 
 const initialState = { 
     menu : [],
@@ -125,6 +116,14 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     totalSumm : {count : state.totalSumm.count-item.count, total : state.totalSumm.total - item.price * item.count },
                     itemsInBasket : [...state.itemsInBasket.slice(0,itemIndex), ...state.itemsInBasket.slice(itemIndex+1)]
+                };
+        }
+        case 'CART_CLEAR_ALL_ITEMS' : {
+    
+                return {
+                    ...state,
+                    totalSumm : {count : 0, total : 0 },
+                    itemsInBasket : []
                 };
         }
             

@@ -1,11 +1,15 @@
 import React from 'react';
 import './cart-table.scss';
 import {connect} from "react-redux";
-import {deleteFromCart,incrementCountInBasket,decrementCountInBasket} from "../../actions";
+import {deleteFromCart,incrementCountInBasket,decrementCountInBasket,clearCart} from "../../actions";
 import WithRestoService from "../hoc/with-resto-service";
 
 
-const CartTable = ({items, deleteFromCart,totalSumm,RestoServiceProp,incrementCountInBasket,decrementCountInBasket}) => {
+class CartTable extends React.Component {
+    state = {showCongratulation : false};
+
+    render() {
+    const{items, deleteFromCart,totalSumm,RestoServiceProp,incrementCountInBasket,decrementCountInBasket}=this.props;
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -44,13 +48,27 @@ const CartTable = ({items, deleteFromCart,totalSumm,RestoServiceProp,incrementCo
 
             
              { totalSumm.count && 
-                <button className="cart__button" onClick={ () => { RestoServiceProp.putOrderToFirebase(); } }>
+                <button className="cart__button" onClick={ () => { 
+                    RestoServiceProp.putOrderToFirebase(); 
+                    this.setState( {showCongratulation : true});
+                    } }
+                >
                     Купить
                 </button>
             }
+            { this.state.showCongratulation ? 
+            <div className="cart__congratulation">
+                <p className="cart__congratulation-firstLine">Спасибо за заказ!</p>
+                <p>Ваш заказ принят и поступил в обработку</p>
+                <p>В ближайшее время наш оператор свяжется с Вами и подтвердит заказ</p>
+            </div>  :
+             null
+            }
         </>
     );
+    }
 };
+
 
 const mapStateToProps = ({itemsInBasket,totalSumm}) => {
     return {
@@ -60,7 +78,7 @@ const mapStateToProps = ({itemsInBasket,totalSumm}) => {
 };
 
 
-const mapDispatchToProps = {deleteFromCart,incrementCountInBasket,decrementCountInBasket};
+const mapDispatchToProps = {deleteFromCart,incrementCountInBasket,decrementCountInBasket,clearCart};
 
 // RestoServiceProp
 

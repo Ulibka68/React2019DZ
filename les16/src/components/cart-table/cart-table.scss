@@ -126,4 +126,26 @@ $color: white;
         border: 1px solid #fff;
         cursor: pointer;
     }
+
+    &__congratulation {
+        color : $color;
+        font-size: $font-size;
+        width : 600px;
+        border : 3px solid black;
+        
+        border-radius: 20px;
+        box-shadow: 15px 15px 20px rgba(26, 24, 24, 0.966);
+        margin: 0 auto;
+        background-color: rgba(173, 216, 230, 0.52);
+        
+        &-firstLine {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+    }
+
+    &__congratulation p {
+        margin : 20px 10px;
+        text-align: center;        
+    }
 }

@@ -51,6 +51,7 @@ export default class RestoService {
         )
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
+            store.dispatch({type : "CART_CLEAR_ALL_ITEMS"});
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);

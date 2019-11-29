@@ -25,6 +25,10 @@ const deleteFromCart = (id) => ({
     type : 'ITEM_REMOVE_FROM_CART',
     payload : id
 });
+const clearCart = () => ({
+    type : 'CART_CLEAR_ALL_ITEMS'
+});
+
 const incrementCountInBasket = (id) => ({
     type : 'INCREMENT_COUNT_IN_BASKET',
     itemID : id
@@ -40,4 +44,10 @@ const menuShowFilter = () => ({
 
 
 
-export {menuLoaded,menuRequested,menuError,filterSet,filterReset,addedToCart,deleteFromCart,incrementCountInBasket,decrementCountInBasket,menuShowFilter}
+export {
+    menuLoaded,menuRequested,menuError,
+    filterSet,filterReset,
+    addedToCart,deleteFromCart,clearCart,
+    incrementCountInBasket,decrementCountInBasket,
+    menuShowFilter
+}
