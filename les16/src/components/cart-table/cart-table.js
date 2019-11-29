@@ -1,11 +1,11 @@
 import React from 'react';
 import './cart-table.scss';
 import {connect} from "react-redux";
-import {deleteFromCart} from "../../actions";
+import {deleteFromCart,incrementCountInBasket,decrementCountInBasket} from "../../actions";
 import WithRestoService from "../hoc/with-resto-service";
 
 
-const CartTable = ({items, deleteFromCart,totalSumm,RestoServiceProp}) => {
+const CartTable = ({items, deleteFromCart,totalSumm,RestoServiceProp,incrementCountInBasket,decrementCountInBasket}) => {
     return (
         <>
             <div className="cart__title">Ваш заказ:</div>
@@ -24,9 +24,9 @@ const CartTable = ({items, deleteFromCart,totalSumm,RestoServiceProp}) => {
                                 </div>
 
                                 <div className ="cart__item-container">
-                                    <button><span className="cart__item-btn-minus">-</span></button>
+                                    <button><span className="cart__item-btn-minus" onClick={ () => decrementCountInBasket(id) }>-</span></button>
                                         <span className="cart__item-count">{count}</span> 
-                                    <button><span className="cart__item-btn-plus">+</span></button>
+                                    <button><span className="cart__item-btn-plus"  onClick={ () => incrementCountInBasket(id) }>+</span></button>
                                 </div>
 
                                 <div className="cart__item-price">{price}$</div>
@@ -60,7 +60,7 @@ const mapStateToProps = ({itemsInBasket,totalSumm}) => {
 };
 
 
-const mapDispatchToProps = {deleteFromCart};
+const mapDispatchToProps = {deleteFromCart,incrementCountInBasket,decrementCountInBasket};
 
 // RestoServiceProp
 

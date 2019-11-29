@@ -25,6 +25,14 @@ const deleteFromCart = (id) => ({
     type : 'ITEM_REMOVE_FROM_CART',
     payload : id
 });
+const incrementCountInBasket = (id) => ({
+    type : 'INCREMENT_COUNT_IN_BASKET',
+    itemID : id
+});
+const decrementCountInBasket = (id) => ({
+    type : 'DECREMENT_COUNT_IN_BASKET',
+    itemID : id
+});
 
 
-export {menuLoaded,menuRequested,menuError,filterSet,filterReset,addedToCart,deleteFromCart}
+export {menuLoaded,menuRequested,menuError,filterSet,filterReset,addedToCart,deleteFromCart,incrementCountInBasket,decrementCountInBasket}

@@ -34,8 +34,26 @@ export default class RestoService {
         }
 
     putOrderToFirebase() {
-        const user = store.getState().user;
-        console.log(user.uid);
+        const state = store.getState();
+        console.log(state.user.uid);
+
+        const uid = state.user.uid;
+        const curDate = Date.now();
+        let today = new Date(curDate);
+
+        firebase.db.collection('orders').doc(uid).collection('userOrders').add( 
+            {
+                orderDate : curDate,
+                orderDateString : today.toLocaleDateString() + " " + today.toLocaleTimeString(),
+                ItemList : state.itemsInBasket
+            }
+        )
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
 
 
     }

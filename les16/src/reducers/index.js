@@ -121,6 +121,40 @@ const reducer = (state = initialState, action) => {
             }
         }
 
+        case 'INCREMENT_COUNT_IN_BASKET' : {
+            const id = action.itemID;
+            const itemIndex = state.itemsInBasket.findIndex( item => item.id === id );
+            let item = {...state.itemsInBasket[itemIndex]};
+            item.count += 1;
+
+            return {
+                ...state,
+                totalSumm : {count : state.totalSumm.count+1, total : state.totalSumm.total + item.price },
+                itemsInBasket : [...state.itemsInBasket.slice(0,itemIndex), item,...state.itemsInBasket.slice(itemIndex+1)]
+            };
+        }
+
+        case 'DECREMENT_COUNT_IN_BASKET' : {
+            const id = action.itemID;
+            const itemIndex = state.itemsInBasket.findIndex( item => item.id === id );
+            let item = {...state.itemsInBasket[itemIndex]};
+            item.count -= 1;
+
+            if ( item.count ) {
+                return {
+                    ...state,
+                    totalSumm : {count : state.totalSumm.count-1, total : state.totalSumm.total - item.price },
+                    itemsInBasket : [...state.itemsInBasket.slice(0,itemIndex), item,...state.itemsInBasket.slice(itemIndex+1)]
+                };
+            } else {  // если количество =0 то товра надо удалить из корзины
+                return {
+                    ...state,
+                    totalSumm : {count : state.totalSumm.count-1, total : state.totalSumm.total - item.price },
+                    itemsInBasket : [...state.itemsInBasket.slice(0,itemIndex), ...state.itemsInBasket.slice(itemIndex+1)]
+                };
+        };
+    }
+
             
             
 
