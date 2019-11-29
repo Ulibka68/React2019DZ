@@ -51,9 +51,16 @@ class Firebase {
 
 
 
-  async getDataFB() {
-      
-      let querySnapshot = await firebase.db.collection("menu").get();
+  async getDataFB(filteredMenuKey) {
+      console.log('filteredMenuKey : ',filteredMenuKey);
+
+      let dbRef;
+      filteredMenuKey === '' ? 
+        dbRef = firebase.db.collection("menu") :
+        dbRef = firebase.db.collection("menu").where('category','==',filteredMenuKey) ;
+
+
+      let querySnapshot = await  dbRef.get();
       let resultData=[];
       querySnapshot.forEach(
           (doc) => {

@@ -16,8 +16,9 @@ class MenuList extends Component {
         const {RestoServiceProp} = this.props;
         // console.log(RestoServiceProp);
 
+        const {filteredMenuKey} = this.props;
         // данная функция возвращает propmice
-        RestoServiceProp.getMenuItems()
+        RestoServiceProp.getMenuItems(filteredMenuKey)
           .then(
             (res) => {
                 
@@ -60,7 +61,9 @@ const mapStateToProps = (state) => {
     return {
         menuItems : state.menu,
         loading : state.loading,
-        error : state.error
+        error : state.error,
+        filteredMenu : state.filteredMenu,
+        filteredMenuKey : state.filteredMenuKey
     }
 }
 

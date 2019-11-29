@@ -12,8 +12,12 @@ const initialState = {
     menu : [],
     loading : true,
     error : false,
+
+    initialShowFilter : false,  // начальное значение показа фильтра по категориям
     filteredMenu : false,  // показывать меню по фильтру
     filteredMenuKey : "",   // ключ по которому фильтровать
+
+
     itemsInBasket : [] ,            // динамически формируемые элементы в корзине
     totalSumm : {count : 0, total : 0},
     user : null        // текущий пользователь Firebase
@@ -50,7 +54,7 @@ const reducer = (state = initialState, action) => {
         case 'MENU_REQUESTED' :
             return {
                 ...state,
-                menu : state.menu,
+                
                 loading : true,
                 error : false
             };
@@ -61,18 +65,29 @@ const reducer = (state = initialState, action) => {
                 loading : false,
                 error : true
             };
+
+
         case 'FILTER_SET' :
             return {
                 ...state,
+                initialShowFilter : false,
                 filteredMenu : true,
                 filteredMenuKey : action.filterKey
             };
-        case 'FILTER_RESET' :
+        case 'MENU_SHOW_FILTER' :
             return {
                 ...state,
+                initialShowFilter : true
+            };
+        case 'FILTER_RESET' : {
+            console.log('FILTER_RESET');
+            return {
+                ...state,
+                initialShowFilter : false,
                 filteredMenu : false,
                 filteredMenuKey : ""
             };
+        }
         case 'ITEM_ADD_TO_CART' : {
             const id = action.payload;
 

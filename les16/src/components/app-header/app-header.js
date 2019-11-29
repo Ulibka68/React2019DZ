@@ -3,23 +3,18 @@ import cartIcon from './shopping-cart-solid.svg';
 import './app-header.scss';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import {menuShowFilter} from "../../actions";
 
 
 class AppHeader extends React.Component {
     
-    state = {showFilter : false};
-
-    onClickFilter = () => {
-            // console.log('Click', this.state.showFilter);
-            this.setState( (prev) => { return { showFilter : ! prev.showFilter} } );
-    }
 
     render() {
-    const {totalSumm,user} = this.props;
-
+    const {totalSumm,user,menuShowFilter ,initialShowFilter = false} = this.props;
+    
     return (
         <header className="header">
-            <Link to={ this.state.showFilter ? "/" : "/menu_filter"} className="header__left material_icons"  onClick={this.onClickFilter} >
+            <Link to={ initialShowFilter ? "/" : "/menu_filter"} className="header__left material_icons"  onClick={() => {menuShowFilter();}} >
                 filter_list
             </Link>
             
@@ -39,7 +34,10 @@ class AppHeader extends React.Component {
 };
 
 
-const mapStateToProps = ({totalSumm,user}) => {
-    return {totalSumm , user};
+const mapStateToProps = ({totalSumm,user,initialShowFilter}) => {
+    return {totalSumm , user,initialShowFilter};
 };
-export default connect(mapStateToProps)(AppHeader);
+
+const mapDispatchToProps = {menuShowFilter};
+
+export default connect(mapStateToProps,mapDispatchToProps)(AppHeader);

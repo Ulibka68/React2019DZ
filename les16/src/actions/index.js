@@ -34,5 +34,10 @@ const decrementCountInBasket = (id) => ({
     itemID : id
 });
 
+const menuShowFilter = () => ({
+    type : 'MENU_SHOW_FILTER'
+});
 
-export {menuLoaded,menuRequested,menuError,filterSet,filterReset,addedToCart,deleteFromCart,incrementCountInBasket,decrementCountInBasket}
+
+
+export {menuLoaded,menuRequested,menuError,filterSet,filterReset,addedToCart,deleteFromCart,incrementCountInBasket,decrementCountInBasket,menuShowFilter}

@@ -8,13 +8,13 @@ import {filterSet,filterReset} from "../../actions";
 class MaterialIcons extends React.Component {
  
     onClick (id) {
-        console.log('onClick',id);
+        // console.log('onClick',id);
         this.props.filterSet(id);
         this.props.history.push('/');
     }
 
     render() {
-    const {RestoServiceProp} = this.props;
+    const {RestoServiceProp,filterReset} = this.props;
 
     let body=[];
     if (RestoServiceProp.categoryUrl_isLoaded ) {
@@ -40,6 +40,15 @@ class MaterialIcons extends React.Component {
         <ul>
            {body}
         </ul>
+
+        <button className={style.buttonClear}  
+            onClick={ () => {
+                filterReset();
+                this.props.history.push('/');
+            }}
+        >
+            Очистить фильтр
+        </button>
     </div>
     );
     }

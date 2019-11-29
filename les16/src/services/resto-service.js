@@ -7,8 +7,9 @@ export default class RestoService {
     categoryUrl_isLoaded = false;
 
     // возвращает promice
-    getMenuItems() {
-        return firebase.getDataFB();
+    getMenuItems(filteredMenuKey) {
+       
+        return firebase.getDataFB(filteredMenuKey);
     }
 
     // прочитать категории и определить URL
