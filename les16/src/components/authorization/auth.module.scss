@@ -1,9 +1,12 @@
 .auth {
     &__container {
         display: box;
+        margin-left: 10px;
         color: white;
+        outline : 5px solid red;
+        background-color: lightgray;
 
         width : 500px;
-        height: 500px;
+        height: 800px;
     }
 }    
