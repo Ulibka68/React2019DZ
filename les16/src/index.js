@@ -7,6 +7,7 @@ import ErrorBoundry from "./components/error-boundry";
 import RestoService from "./services/resto-service";
 import RestoServiceContext from "./components/resto-service-context";
 import store from "./store";
+// eslint-disable-next-line
 import firebase from "./firebase";
 import './index.scss';
 
