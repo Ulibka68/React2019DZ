@@ -21,6 +21,10 @@ class AppHeader extends React.Component {
             <span className="material_icons header__user">account_circle</span>  
             { user && <span className="header__link">{user.displayName}</span>}
 
+            <Link to="/auth" className="header__link" >
+                Test auth
+            </Link>
+
             <Link to="/" className="header__link" >
                 Menu
             </Link>

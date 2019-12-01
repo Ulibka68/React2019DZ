@@ -10,6 +10,7 @@ import store from "./store";
 import firebase from "./firebase";
 import './index.scss';
 
+/*
 console.log('авторизация firebase : ')
 firebase.login("t2@t.ru","123456")
     .then ( (user) => { 
@@ -27,6 +28,7 @@ firebase.login("t2@t.ru","123456")
           
 
     }  );
+*/
 
     // let userFB = firebase.auth.currentUser;
     // console.log('firebase.auth.currentUser : ',userFB);
